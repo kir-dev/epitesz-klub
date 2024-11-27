@@ -26,15 +26,31 @@ export const Users: CollectionConfig = {
             type: 'select',
             options: [
                 {
-                    label: 'Admin',
-                    value: 'admin',
+                    label: 'Elnök',
+                    value: 'elnok',
                 },
                 {
-                    label: 'User',
-                    value: 'user',
+                    label: 'Általános alelnök',
+                    value: 'altalanos_alelnok',
                 },
+                {
+                    label: 'Külkapcsolati alelnök',
+                    value: 'kulkapcsolati_alelnok',
+                },
+                {
+                    label: 'PR alelnök',
+                    value: 'pr_alelnok',
+                },
+                {
+                    label: 'Gazdasági alelnök',
+                    value: 'gazdasagi_alelnok',
+                },
+                {
+                    label: 'Tag',
+                    value: 'tag',
+                }
             ],
-            defaultValue: 'user',
+            defaultValue: 'tag',
             required: true,
         },
         {
