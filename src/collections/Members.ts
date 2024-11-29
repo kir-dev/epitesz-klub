@@ -5,7 +5,6 @@ export const Members: CollectionConfig = {
     admin: {
         useAsTitle: 'email',
     },
-    auth: true,
     fields: [
         {
             name: 'email',
