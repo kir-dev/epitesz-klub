@@ -68,7 +68,7 @@ export const Events: CollectionConfig = {
     {
       name: 'leírás',
       label: 'Leírás',
-      type: 'text',
+      type: 'textarea',
       required: true,
     },
     {
