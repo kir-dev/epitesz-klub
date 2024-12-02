@@ -51,12 +51,11 @@ const navItems: NavItem[] = [
 export default function NavBar() {
     return (
         <header className="relative w-full">
-            {/* Geometric pattern background */}
             <div
                 className="absolute inset-0 bg-black"
                 style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l30 30-30 30z' fill='%23111111' fill-opacity='0.4'/%3E%3C/svg%3E")`,
-                    backgroundSize: '60px 60px'
+                    backgroundImage: 'url(/NavBarBg.png)',
+                    backgroundSize: 'contain'
                 }}
             />
 
