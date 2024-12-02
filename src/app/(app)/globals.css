@@ -15,14 +15,17 @@
 }
 
 @font-face {
-    font-family: 'Ikaros Sans';
-    src: url('/public/Ikaros-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "Ikaros Sans Regular";
+    src: url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.eot");
+    src: url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.svg#Ikaros Sans Regular") format("svg");
 }
 
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: "Ikaros Sans", sans-serif;
+    font-family: "Ikaros Sans Regular", sans-serif;
 }
