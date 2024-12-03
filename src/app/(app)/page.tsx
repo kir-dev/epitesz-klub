@@ -1,5 +1,6 @@
 import config from "@payload-config";
 import {getPayload} from "payload";
+import NavBar from "@/app/(app)/Components/navBar";
 import Footer from "@/app/(app)/Components/Footer";
 
 export default async function Home() {
@@ -13,9 +14,9 @@ export default async function Home() {
     })
 
     return (
-        <>
+        <><NavBar/>
             <div
-                className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+                className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
                 <h1>Építész Klub</h1>
                 {data.docs.map((doc, i) => (
                     <img key={i} src={doc.url ? doc.url : ""} alt={doc.alt}></img>
