@@ -25,7 +25,7 @@
 }
 
 body {
-    color: var(--foreground);
-    background: var(--background);
+    color: white;
+    background: black;
     font-family: "Ikaros Sans Regular", sans-serif;
 }
