@@ -1,6 +1,5 @@
 import config from "@payload-config";
 import {getPayload} from "payload";
-import Footer from "@/app/(app)/Components/Footer";
 
 export default async function Home() {
 
@@ -20,9 +19,6 @@ export default async function Home() {
                 {data.docs.map((doc, i) => (
                     <img key={i} src={doc.url ? doc.url : ""} alt={doc.alt}></img>
                 ))}
-            </div>
-            <div>
-                <Footer/>
             </div>
         </>
     );
