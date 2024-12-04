@@ -9,41 +9,8 @@ export const Events: CollectionConfig = {
     {
       name: 'típus',
       label: 'Típus',
-      type: 'select',
-        options: [
-            {
-            label: 'Bejárások',
-            value: 'bejarasok',
-            },
-            {
-            label: 'Előadások',
-            value: 'eloadasok',
-            },
-            {
-            label: 'Kirándulások',
-            value: 'kirandulasok',
-            },
-            {
-            label: 'Pályázatok',
-            value: 'palyazatok',
-            },
-            {
-            label: 'Budapest100',
-            value: 'budapest100',
-            },
-            {
-            label: 'Piknik',
-            value: 'piknik',
-            },
-            {
-            label: 'Workshopok, kurzusok',
-            value: 'workshopok, kurzusok',
-            },
-            {
-            label: 'Építő- és felmérőtáborok',
-            value: 'epito- es felmerotaborok',
-            },
-        ],
+      type: 'relationship',
+      relationTo: 'categories',
       required: true,
     },
     {
