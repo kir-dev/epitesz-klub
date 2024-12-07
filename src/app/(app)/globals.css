@@ -3,19 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+@font-face {
+    font-family: "Ikaros Sans Regular";
+    src: url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.eot");
+    src: url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/65d7e8b0754dfdda61108afbafba0869.svg#Ikaros Sans Regular") format("svg");
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: "Ikaros Sans Regular", sans-serif;
 }
