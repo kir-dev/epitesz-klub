@@ -16,7 +16,7 @@ export const Categories: CollectionConfig = {
       required: true,
     },
     {
-      name: 'kep',
+      name: 'image',
       label: 'Kép',
       type: 'upload',
         relationTo: 'media',

@@ -135,7 +135,7 @@ export interface Event {
 export interface Category {
   id: number;
   name: string;
-  kep: number | Media;
+  image: number | Media;
   icon?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -275,7 +275,7 @@ export interface EventsSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
-  kep?: T;
+  image?: T;
   icon?: T;
   updatedAt?: T;
   createdAt?: T;

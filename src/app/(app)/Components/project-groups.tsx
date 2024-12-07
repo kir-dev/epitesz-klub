@@ -1,35 +1,36 @@
 'use client';
 
 import { Category } from "@/payload-types";
-import { Payload } from "payload";
-import { useEffect, useState } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface ProjectGroupsProps {
-    payload: Payload;
+    categories: Category[];
 }
 
 export default function ProjectGroups(props: ProjectGroupsProps) {
-    const [categories, setCategories] = useState<Category[]>([]);
-
-    const getData = async () => {
-        const data = await props.payload.find({
-            collection: 'categories',
-            depth: 1,
-        });
-        setCategories(data.docs);
-    }
-
-    useEffect(() => {
-        getData();
-    }, []);
 
     return (
-        <div>
-            {categories.map((category: Category) => (
-                <div key={category.id}>
-                    <h2>{category.name}</h2>
-                </div>
-            ))}
+        <div className="flex items-center justify-center m-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
+                {props.categories.map((category, index) => (
+                    <Link key={index} href="https://example.com" className="block relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out group">
+                        <Image
+                        src={category.image.url}
+                        alt={category.image.alt}
+                        width={300}
+                        height={200}
+                        className="w-full h-auto object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-100 group-hover:bg-opacity-0 transition-opacity duration-300">
+                            <p className="text-white text-center font-semibold px-2 py-1 rounded">
+                                {category.name}
+                            </p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
         </div>
+
     );
 }
