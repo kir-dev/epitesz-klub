@@ -6,7 +6,7 @@ The project runs on Next.js, with built-in Payload Headless CMS.
 
 To run the project, you need to give your database URI within the `.env` file. You can use the Docker Compose file in the root of the project to host a postgres server. In that case, the `.env` file would look something like this:
 ```
-postgresql://<user>:<password>@127.0.0.1:5432/<dbname>
+DATABASE_URI=postgresql://<user>:<password>@127.0.0.1:5432/<dbname>
 PAYLOAD_SECRET=<secret>
 
 POSTGRES_USER=<user>
