@@ -15,7 +15,7 @@ POSTGRES_DB=<dbname>
 ```
 The secret can be any given string (e.g. `1234`)
 
-To install the dependencies of all the packages, be sure to have yarn installed:
+To install the dependencies of all the packages, be sure to have Yarn installed:
 ```bash
 npm install --global yarn
 ```
