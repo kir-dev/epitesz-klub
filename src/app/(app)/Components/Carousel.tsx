@@ -12,20 +12,8 @@ const NextArrow = (props: { onClick?: () => void }) => {
     const {onClick} = props;
     return (
         <div
-            style={{
-                position: "absolute",
-                right: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                background: "linear-gradient(to left, rgba(0, 0, 0, 0.95) 25%, transparent 100%)",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                width: "100px",
-            }}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-full flex items-center justify-center cursor-pointer w-24"
+            style={{background: "linear-gradient(to left, rgba(0, 0, 0, 0.95) 25%, transparent 100%)"}}
             onClick={onClick}
         >
             <BiSolidRightArrow size={40} color="white"/>
@@ -37,21 +25,9 @@ const PrevArrow = (props: { onClick?: () => void }) => {
     const {onClick} = props;
     return (
         <div
-            style={{
-                position: "absolute",
-                left: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                background: "linear-gradient(to right, rgba(0, 0, 0, 0.95) 25%, transparent 100%)",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                width: "100px"
-            }}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-full flex items-center justify-center cursor-pointer w-24"
             onClick={onClick}
+            style={{background: "linear-gradient(to right, rgba(0, 0, 0, 0.95) 25%, transparent 100%)"}}
         >
             <BiSolidLeftArrow size={40} color="white"/>
         </div>
@@ -60,7 +36,7 @@ const PrevArrow = (props: { onClick?: () => void }) => {
 
 export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[] } }) {
     const settings = {
-        className: "flex justify-center items-center",
+        className: "slider variable-width",
         centerMode: true,
         infinite: true,
         slidesToShow: 3,
