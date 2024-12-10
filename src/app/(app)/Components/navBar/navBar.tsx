@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-interface NavItem {
+export interface NavItem {
     title: string
     href: string
     children?: NavItem[]
@@ -24,12 +24,7 @@ const navItems: NavItem[] = [
     },
     {
         title: "projektek",
-        href: "#",
-        children: [
-            {title: "projekt1", href: "#"},
-            {title: "projekt2", href: "#"},
-            {title: "projekt3", href: "#"},
-        ],
+        href: "/projektek",
         dropdownColor: "#F1CA47",
     },
     {
@@ -48,7 +43,15 @@ const navItems: NavItem[] = [
     },
 ]
 
-export default function NavBar() {
+interface NavBarProps {
+    categories: NavItem[]
+}
+
+export default function NavBar(props: NavBarProps) {
+    console.log(props.categories);
+    navItems[1].children = props.categories;
+    console.log(navItems[1].children);
+
     return (
         <header className="relative w-full">
             <div
