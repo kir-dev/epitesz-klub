@@ -60,23 +60,25 @@ const PrevArrow = (props: { onClick?: () => void }) => {
 
 export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[] } }) {
     const settings = {
-        className: "flex justify-center items-center",
+        className: "overflow-hidden",
+        variableWidth: true,
         centerMode: true,
         infinite: true,
-        slidesToShow: 3,
+        slidesToShow: 1,
         speed: 500,
         autoplay: true,
         autoplaySpeed: 5000,
         nextArrow: <NextArrow/>,
         prevArrow: <PrevArrow/>,
+
     };
 
     return (
-        <div>
+        <div className="slider-container">
             <Slider {...settings}>
                 {data.docs.map((doc, index) => (
-                    <div key={index} className="flex justify-center items-center">
-                        <img src={doc.url} alt={doc.alt} className="object-contain h-full w-full"/>
+                    <div key={index} className="p-4 flex h-48 sm:h-64 md:h-96 w-auto outline-none">
+                        <img src={doc.url} alt={doc.alt} className="object-cover h-full w-auto"/>
                     </div>
                 ))}
             </Slider>
