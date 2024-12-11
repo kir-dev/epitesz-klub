@@ -11,6 +11,7 @@ export const Events: CollectionConfig = {
       label: 'Típus',
       type: 'relationship',
       relationTo: 'categories',
+      maxDepth: 1,
       required: true,
     },
     {
@@ -30,6 +31,7 @@ export const Events: CollectionConfig = {
       label: 'Kép',
       type: 'upload',
         relationTo: 'media',
+        maxDepth: 1,
       required: true,
     },
     {
