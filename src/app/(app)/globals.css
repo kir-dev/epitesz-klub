@@ -29,3 +29,7 @@ body {
     background: black;
     font-family: "Ikaros Sans Regular", sans-serif;
 }
+
+.slick-slide div {
+    outline: none;
+}
