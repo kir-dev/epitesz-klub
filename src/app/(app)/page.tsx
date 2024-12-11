@@ -1,8 +1,8 @@
-// src/app/(app)/page.tsx
 import config from "@payload-config";
 import {getPayload} from "payload";
 import {MyCarousel} from "./Components/Carousel";
 import 'flowbite/dist/flowbite.css';
+import {Media} from "@/payload-types";
 
 export default async function Home() {
     const payload = await getPayload({
@@ -14,11 +14,12 @@ export default async function Home() {
     });
 
     const data = {
-        docs: result.docs.map((doc: any) => ({
-            url: doc.url,
-            alt: doc.alt
+        docs: result.docs.map((doc: Media) => ({
+            url: doc.url ?? '',
+            alt: doc.alt ?? ''
         }))
     };
+
     return (
         <>
             <MyCarousel data={data}/>
