@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 interface ProjectGroupsProps {
     categories: Category[];
-    setSelectedCategory: (category: Category) => void;
 }
 
 export default function ProjectGroups(props: ProjectGroupsProps) {
