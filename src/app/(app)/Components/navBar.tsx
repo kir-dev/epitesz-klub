@@ -50,7 +50,7 @@ const navItems: NavItem[] = [
 
 export default function NavBar() {
     return (
-        <header className="relative w-full">
+        <header className="relative w-full z-50">
             <div
                 className="absolute inset-0 bg-black"
                 style={{
@@ -82,7 +82,7 @@ export default function NavBar() {
 
                                 {item.children && (
                                     <div
-                                        className="absolute left-0 hidden group-hover:block w-48 shadow-lg"
+                                        className="absolute left-0 hidden group-hover:block w-48 shadow-lg z-50"
                                         style={{backgroundColor: item.dropdownColor}}>
                                         {item.children.map((child) => (
                                             <Link
@@ -103,4 +103,3 @@ export default function NavBar() {
         </header>
     )
 }
-
