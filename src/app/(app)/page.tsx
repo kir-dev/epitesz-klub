@@ -1,12 +1,9 @@
-import config from "@payload-config";
-import {getPayload} from "payload";
-
 export default async function Home() {
 
 
     return (
-        <>
-        
-        </>
+            <div>
+                <h1>Építész Klub</h1>
+            </div>
     );
 }
