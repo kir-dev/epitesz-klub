@@ -27,17 +27,15 @@ export default function Map() {
         }).addTo(map);
 
         // Egyéni marker ikon létrehozása
-        const grayIcon = new L.Icon({
-            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [0, -41],
-            className: 'custom-gray-marker',
+        const customIcon = new L.Icon({
+            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png', // Az ikon URL-je
+            iconSize: [25, 41], // Az ikon mérete
+            iconAnchor: [12, 41], // Az ikon "fészkének" beállítása (az a pont, amelyhez a koordinátákat illesztjük)
+            popupAnchor: [0, -41], // A popup elhelyezkedése
         });
 
         // Marker hozzáadása az egyéni ikonnal
-        const marker = L.marker(bercsenyiCoordinates, { icon: grayIcon }).addTo(map);
+        const marker = L.marker(bercsenyiCoordinates, { icon: customIcon }).addTo(map);
 
         // Popup hozzáadása a markerhez
         marker.bindPopup('<b>Bercsényi Kollégium</b><br>Budapest, Műegyetem rakpart 5.').openPopup();
