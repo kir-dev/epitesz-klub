@@ -3,9 +3,6 @@
 import React, {useEffect} from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-import 'leaflet.awesome-markers';
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
 
 export default function Map() {
     useEffect(() => {
@@ -30,14 +27,17 @@ export default function Map() {
         }).addTo(map);
 
         // Egyéni marker ikon létrehozása
-        const customIcon = L.AwesomeMarkers.icon({
-            icon: 'star', // Az ikon típusa (pl. csillag)
-            markerColor: 'gray', // Marker színe
-            prefix: 'fa', // Font Awesome használata
+        const grayIcon = new L.Icon({
+            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [0, -41],
+            className: 'custom-gray-marker',
         });
 
         // Marker hozzáadása az egyéni ikonnal
-        const marker = L.marker(bercsenyiCoordinates, { icon: customIcon }).addTo(map);
+        const marker = L.marker(bercsenyiCoordinates, { icon: grayIcon }).addTo(map);
 
         // Popup hozzáadása a markerhez
         marker.bindPopup('<b>Bercsényi Kollégium</b><br>Budapest, Műegyetem rakpart 5.').openPopup();
@@ -90,7 +90,9 @@ export default function Map() {
                 .leaflet-popup-tip {
                     background: #333;
                 }
-               
+                .leaflet-marker-icon {
+                    filter: grayscale(100%);
+                }
                 `}
             </style>
             <div id="map" className="relative h-full" style={{ height: '100%', width: '100%', marginTop: 0}} />

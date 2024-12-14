@@ -21,8 +21,6 @@
     "clsx": "^2.1.1",
     "graphql": "^16.9.0",
     "leaflet": "^1.9.4",
-    "leaflet-color-markers": "^0.1.0",
-    "leaflet.awesome-markers": "^2.0.5",
     "lucide-react": "^0.468.0",
     "next": "15.0.3",
     "payload": "^3.0.1",
