@@ -1,7 +1,6 @@
 import config from "@payload-config";
 import {getPayload} from "payload";
 import {MyCarousel} from "./Components/Carousel";
-import 'flowbite/dist/flowbite.css';
 import {Media} from "@/payload-types";
 
 export default async function Home() {
