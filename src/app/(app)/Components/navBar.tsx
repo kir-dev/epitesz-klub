@@ -1,7 +1,9 @@
 'use client'
 
 import * as React from "react"
+import {useEffect, useState} from "react"
 import Link from "next/link"
+import {usePathname} from "next/navigation"
 
 interface NavItem {
     title: string
@@ -44,18 +46,31 @@ const navItems: NavItem[] = [
     },
     {
         title: "kapcsolat",
-        href: "#",
+        href: "/contact",
     },
 ]
 
 export default function NavBar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+    const pathname = usePathname();
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
+
     return (
         <header className="relative w-full z-50">
             <div
                 className="absolute inset-0 bg-black"
                 style={{
                     backgroundImage: 'url(/NavBarBg.png)',
-                    backgroundSize: 'contain'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'bottom',
                 }}
             />
 
@@ -69,15 +84,26 @@ export default function NavBar() {
                         Építész Klub Szakkollégium
                     </Link>
 
-                    {/* Navigation */}
-                    <nav className="flex space-x-1">
+                    <button
+                        className="text-white lg:hidden p-2"
+                        onClick={toggleMenu}
+                        aria-label="Toggle menu"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+
+                    <nav className="hidden lg:flex space-x-1">
                         {navItems.map((item) => (
                             <div key={item.title} className="relative group">
-                                <Link
-                                    href={item.href}
-                                    className="px-4 py-2 block text-white hover:bg-white/10 transition-colors"
-                                >
-                                    {item.title}
+                                <Link href={item.href}>
+                                    <button
+                                        onClick={() => setOpenSubmenu(openSubmenu === item.title ? null : item.title)}
+                                        className="px-4 py-2 text-white hover:bg-white/10 transition-colors"
+                                    >
+                                        {item.title}
+                                    </button>
                                 </Link>
 
                                 {item.children && (
@@ -99,7 +125,43 @@ export default function NavBar() {
                         ))}
                     </nav>
                 </div>
+
+                {isOpen && (
+                    <div className="lg:hidden bg-black text-white absolute top-full left-0 w-full z-50">
+                        {navItems.map((item) => (
+                            <div key={item.title} className="border-b border-gray-700">
+                                <Link href={item.href}>
+                                    <button
+                                        onClick={() => setOpenSubmenu(openSubmenu === item.title ? null : item.title)}
+                                        className="flex justify-between items-center w-full px-4 py-2 transition-colors"
+                                    >
+                                        {item.title}
+                                        {item.children && (
+                                            <svg className={`w-4 h-4 transition-transform ${openSubmenu === item.title ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                </Link>
+                                {item.children && openSubmenu === item.title && (
+                                    <div style={{backgroundColor: item.dropdownColor}}>
+                                        {item.children.map((child) => (
+                                            <Link
+                                                key={child.title}
+                                                href={child.href}
+                                                className="block px-6 py-2 text-black hover:bg-white/10 transition-colors"
+                                            >
+                                                {child.title}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </header>
     )
 }
+
