@@ -70,14 +70,13 @@ export default function Map() {
                     padding: 12px;
                     font-family: "Ikaros Sans Regular", sans-serif;
                 }
-
                 .leaflet-popup-content-wrapper {
                     background-color: #333 !important;
                     border: none !important;
                     border-radius: 8px !important;
                 }
                 .leaflet-popup-tip {
-                    background: #333;
+                    background: #333 !important;
                 }
                 .leaflet-marker-icon {
                     filter: grayscale(100%);
