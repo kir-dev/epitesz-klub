@@ -53,7 +53,7 @@ export default function NavBar(props: NavBarProps) {
     console.log(navItems[1].children);
 
     return (
-        <header className="relative w-full" style={{ zIndex: 1000 }}>
+        <header className="relative w-full z-[1000]">
             <div
                 className="absolute inset-0 bg-black"
                 style={{

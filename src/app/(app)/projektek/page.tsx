@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectGroups from "./Components/project-groups";
+import ProjectGroups from "../Components/projects/project-groups";
 import { getPayload } from "payload";
 import config from "@payload-config";
 

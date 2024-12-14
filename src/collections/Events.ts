@@ -3,11 +3,11 @@ import type { CollectionConfig } from 'payload'
 export const Events: CollectionConfig = {
   slug: 'events',
   admin: {
-    useAsTitle: 'cím',
+    useAsTitle: 'title',
   },
   fields: [
     {
-      name: 'típus',
+      name: 'type',
       label: 'Típus',
       type: 'relationship',
       relationTo: 'categories',
@@ -15,19 +15,19 @@ export const Events: CollectionConfig = {
       required: true,
     },
     {
-      name: 'cím',
+      name: 'title',
       label: 'Cím',
       type: 'text',
       required: true,
     },
     {
-      name: 'dátum',
+      name: 'date',
       label: 'Dátum',
       type: 'date',
       required: true,
     },
     {
-      name: 'kép',
+      name: 'picture',
       label: 'Kép',
       type: 'upload',
         relationTo: 'media',
@@ -35,19 +35,19 @@ export const Events: CollectionConfig = {
       required: true,
     },
     {
-      name: 'leírás',
+      name: 'description',
       label: 'Leírás',
       type: 'textarea',
       required: true,
     },
     {
-      name: 'főesemény',
+      name: 'mainEvent',
       label: 'Főesemény',
       type: 'checkbox',
       required: true,
     },
     {
-      name: 'aktuális',
+      name: 'actual',
       label: 'Aktuális',
       type: 'checkbox',
       required: true,

@@ -1,9 +1,13 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
-import CategoryEvents from "@/app/(app)/projektek/Components/category"; 
+import CategoryEvents from "@/app/(app)/Components/projects/category";
 
-export default async function CategoryEventsPage({ params }: { params: { id: string } }) {
-    const { id } = params;
+type PageProps = {
+    params: Promise<{ id: string }>;
+};
+
+export default async function CategoryEventsPage(context: PageProps) {
+    const { id } = await context.params;
     console.log(id);
     if (id === "undefined") {
         return (
@@ -17,7 +21,7 @@ export default async function CategoryEventsPage({ params }: { params: { id: str
     const events = await payload.find({
         collection: "events",
         where: {
-            típus: {
+            type: {
                 equals: id
             }
         }
@@ -26,5 +30,5 @@ export default async function CategoryEventsPage({ params }: { params: { id: str
 
     return (
         <CategoryEvents events={events.docs} />
-    )
+    );
 }

@@ -16,7 +16,7 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
                 {props.categories.map((category, index) => (
                     <Link key={index} href={`/projektek/${category.id}`} className="block relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out group" >
                         <Image
-                        src={category.image.url}
+                        src={category.image.url ?? ''}
                         alt={category.image.alt}
                         width={300}
                         height={200}
