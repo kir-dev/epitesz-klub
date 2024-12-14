@@ -76,6 +76,7 @@ export default function NavBar() {
 
             <div className="relative mx-auto max-w-7xl px-4 py-6">
                 <div className="flex items-center justify-between">
+                    {/* Logo/Title */}
                     <Link
                         href="/"
                         className="px-6 py-2 text-2xl font-bold text-white"
@@ -104,11 +105,11 @@ export default function NavBar() {
                                         {item.title}
                                     </button>
                                 </Link>
+
                                 {item.children && (
                                     <div
-                                        className={`absolute left-0 w-48 z-50 hidden group-hover:block`}
-                                        style={{backgroundColor: item.dropdownColor}}
-                                    >
+                                        className="absolute left-0 hidden group-hover:block w-48 shadow-lg z-50"
+                                        style={{backgroundColor: item.dropdownColor}}>
                                         {item.children.map((child) => (
                                             <Link
                                                 key={child.title}
@@ -163,3 +164,4 @@ export default function NavBar() {
         </header>
     )
 }
+
