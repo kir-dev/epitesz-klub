@@ -1,15 +1,4 @@
-import config from "@payload-config";
-import {getPayload} from "payload";
-
 export default async function Home() {
-
-    const payload = await getPayload({
-        config
-    })
-
-    const data = await payload.find({
-        collection: 'media'
-    })
 
     return (
         <>
