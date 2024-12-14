@@ -33,7 +33,7 @@ export default function Page() {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10 h-full items-stretch">
-                        <div className="space-y-8 h-full">
+                        <div className="space-y-8 h-full order-1 lg:order-1">
                             <div className="prose prose-invert">
                                 <div className="items-start mb-4">
                                     <div className="flex items-center mb-2">
@@ -54,7 +54,8 @@ export default function Page() {
                                         </button>
                                     </div>
                                     <div className="flex space-x-4">
-                                        <Link href="https://www.instagram.com/epitesz_klub_szakkollegium/" target="_blank"
+                                        <Link href="https://www.instagram.com/epitesz_klub_szakkollegium/"
+                                              target="_blank"
                                               rel="noopener noreferrer" className="text-zinc-300 hover:text-gray-600">
                                             <Instagram className="h-6 w-6"/>
                                             <span className="sr-only">Instagram</span>
@@ -80,7 +81,8 @@ export default function Page() {
                                 </p>
                             </div>
                         </div>
-                        <div>
+
+                        <div className="order-3 lg:order-2">
                             <h2 className="text-2xl font-semibold mb-4 text-zinc-100">Műterem</h2>
                             <div className="space-y-2 text-zinc-300">
                                 <p>Bercsényi Kollégium 5.em.</p>
@@ -89,7 +91,7 @@ export default function Page() {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="order-2 lg:order-2">
                             <Card className="bg-zinc-800 border-zinc-700">
                                 <CardContent className="p-6 h-full">
                                     <form className="space-y-6 h-full">
@@ -141,11 +143,10 @@ export default function Page() {
                             </Card>
                         </div>
 
-                        <div className="space-y-8 h-full">
-
-                        <div className="relative h-full">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.9015870927266!2d19.057!3d47.477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dda3f096c761%3A0x7f8be5816ab76f58!2zQnVkYXBlc3QsIEJlcmNzw6lueWkgdS4gMjgsIDExMTc!5e0!3m2!1sen!2shu!4v1710284151776!5m2!1sen!2shu"
+                        <div className="space-y-8 h-full order-4 lg:order-4">
+                            <div className="relative h-full">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.9015870927266!2d19.057!3d47.477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dda3f096c761%3A0x7f8be5816ab76f58!2zQnVkYXBlc3QsIEJlcmNzw6lueWkgdS4gMjgsIDExMTc!5e0!3m2!1sen!2shu!4v1710284151776!5m2!1sen!2shu"
                                     width="100%"
                                     height="100%"
                                     style={{border: 0}}
@@ -158,6 +159,6 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
     );
 }

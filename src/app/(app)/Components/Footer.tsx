@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
 
     return (
         <footer className="w-full py-6 bg-gradient-to-r from-black via-white to-black text-black">
-            <div className="container mx-auto px-4 flex flex-col items-center text-center space-y-6">
+            <div className="w-full container mx-auto px-4 flex flex-col items-center text-center space-y-6">
                 <div className="flex items-center mb-4">
                     <Mail className="h-5 w-5 mr-2 text-gray-800"/>
                     <button
