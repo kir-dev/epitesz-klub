@@ -70,7 +70,7 @@ export default function NavBar() {
                 style={{
                     backgroundImage: 'url(/NavBarBg.png)',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'bottom',
                 }}
             />
 

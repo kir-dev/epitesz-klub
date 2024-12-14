@@ -10,7 +10,7 @@ export default function Map() {
             const bercsenyiCoordinates: [number, number] = [47.4750863, 19.0503865]; // Bercsényi Kollégium koordinátái
 
             const map = L.map('map', {
-                attributionControl: true,
+                attributionControl: false,
                 zoomControl: false,
                 dragging: false,
                 scrollWheelZoom: false,
@@ -33,7 +33,7 @@ export default function Map() {
             });
 
             const marker = L.marker(bercsenyiCoordinates, { icon: customIcon }).addTo(map);
-            marker.bindPopup('<b>Bercsényi Kollégium</b><br>Budapest, Műegyetem rakpart 5.').openPopup();
+            marker.bindPopup('Bercsényi Kollégium<br>Budapest, Bercsényi utca 28-30').openPopup();
 
             return () => {
                 map.remove();
@@ -45,6 +45,9 @@ export default function Map() {
         <>
             <style>
                 {`
+                #map {
+                    filter: brightness(1.5); /* Fényerő növelése */
+                }
                 .leaflet-control-zoom {
                     background-color: #212121 !important;
                     border: 1px solid #424242 !important;
@@ -67,8 +70,10 @@ export default function Map() {
                     background-color: #333 !important;
                     color: #fff !important;
                     border-radius: 8px;
-                    padding: 12px;
+                    padding: 8px;
                     font-family: "Ikaros Sans Regular", sans-serif;
+                    font-size: 16px !important;
+                    margin: 10px 10px 10px 10px !important;
                 }
                 .leaflet-popup-content-wrapper {
                     background-color: #333 !important;
