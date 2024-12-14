@@ -3,7 +3,13 @@
 import React from "react"
 import ContactForm from "@/app/(app)/Components/ContactForm"
 import ContactInfo from "@/app/(app)/Components/ContactInfo"
-import Map from "@/app/(app)/Components/Map"
+import Link from "next/link";
+
+import dynamic from 'next/dynamic';
+
+// Dinamikus importálás: térkép csak a böngészőben jelenik meg
+const Map = dynamic(() => import('@/app/(app)/Components/Map'), { ssr: false });
+
 
 export default function Page() {
     return (
@@ -33,9 +39,9 @@ export default function Page() {
                     <div className="order-2 lg:order-2">
                         <ContactForm />
                     </div>
-                    <div className="space-y-8 h-full order-4 lg:order-4">
+                    <Link className="space-y-8 h-full order-4 lg:order-4" href={"https://maps.app.goo.gl/bhmBaitSa5hAVXu69"} target="_blank">
                         <Map />
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

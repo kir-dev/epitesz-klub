@@ -6,48 +6,39 @@ import 'leaflet/dist/leaflet.css';
 
 export default function Map() {
     useEffect(() => {
-        const bercsenyiCoordinates: [number, number] = [47.4750863, 19.0503865]; // Bercsényi Kollégium koordinátái
+        if (typeof window !== "undefined") {
+            const bercsenyiCoordinates: [number, number] = [47.4750863, 19.0503865]; // Bercsényi Kollégium koordinátái
 
-        // Térkép létrehozása
-        const map = L.map('map', {
-            attributionControl: true,
-            zoomControl: false,
-            dragging: false,
-            scrollWheelZoom: false,
-            doubleClickZoom: false,
-            boxZoom: false,
-            touchZoom: false,
-            closePopupOnClick: false,
-        }).setView(bercsenyiCoordinates, 16); // Térkép középpontja és zoom szintje
+            const map = L.map('map', {
+                attributionControl: true,
+                zoomControl: false,
+                dragging: false,
+                scrollWheelZoom: false,
+                doubleClickZoom: false,
+                boxZoom: false,
+                touchZoom: false,
+                closePopupOnClick: false,
+            }).setView(bercsenyiCoordinates, 16);
 
-        // Sötét témájú csempeszolgáltatás
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            subdomains: 'abcd',
-            maxZoom: 19,
-        }).addTo(map);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                subdomains: 'abcd',
+                maxZoom: 19,
+            }).addTo(map);
 
-        // Egyéni marker ikon létrehozása
-        const customIcon = new L.Icon({
-            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png', // Az ikon URL-je
-            iconSize: [25, 41], // Az ikon mérete
-            iconAnchor: [12, 41], // Az ikon "fészkének" beállítása (az a pont, amelyhez a koordinátákat illesztjük)
-            popupAnchor: [0, -41], // A popup elhelyezkedése
-        });
+            const customIcon = new L.Icon({
+                iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [0, -41],
+            });
 
-        // Marker hozzáadása az egyéni ikonnal
-        const marker = L.marker(bercsenyiCoordinates, { icon: customIcon }).addTo(map);
+            const marker = L.marker(bercsenyiCoordinates, { icon: customIcon }).addTo(map);
+            marker.bindPopup('<b>Bercsényi Kollégium</b><br>Budapest, Műegyetem rakpart 5.').openPopup();
 
-        // Popup hozzáadása a markerhez
-        marker.bindPopup('<b>Bercsényi Kollégium</b><br>Budapest, Műegyetem rakpart 5.').openPopup();
-
-        // Kattintás esemény hozzáadása a térképhez
-        map.on('click', () => {
-            window.open('https://maps.app.goo.gl/bhmBaitSa5hAVXu69', '_blank');
-        });
-
-        return () => {
-            map.remove();
-        };
+            return () => {
+                map.remove();
+            };
+        }
     }, []);
 
     return (
@@ -71,7 +62,7 @@ export default function Map() {
                     border: 1px solid #424242 !important;
                     border-radius: 4px;
                 }
-                /* Popup testreszabása sötét témához */
+               
                 .leaflet-popup-content {
                     background-color: #333 !important;
                     color: #fff !important;
@@ -81,9 +72,9 @@ export default function Map() {
                 }
 
                 .leaflet-popup-content-wrapper {
-                    background-color: #333 !important; /* Sötét háttér a körülötte lévő konténerhez */
-                    border: none !important;           /* A szegély eltávolítása */
-                    border-radius: 8px !important;     /* Lekerekített sarkok */
+                    background-color: #333 !important;
+                    border: none !important;
+                    border-radius: 8px !important;
                 }
                 .leaflet-popup-tip {
                     background: #333;
