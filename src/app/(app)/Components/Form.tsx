@@ -1,20 +1,52 @@
 'use client';
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import {useState} from "react";
+import { useState} from "react";
+import axios from "axios";
+
+const url = "https://mail.kir-dev.hu/api/send";
 
 export default function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleSubmit = async () => {
+    if (!name || !email || !message) {
+      alert("Minden mezőt ki kell tölteni!");
+      return;
+    }
+    console.log(name, email, message);
+      const response = await axios.post(
+          url,
+          {
+            from: {
+              name: name || "Teszt Név",
+              email: email || "teszt@example.com",
+            },
+            to: "liptak.peti.98@gmail.com",
+            subject: "Próba5",
+            html: message || "<h1>Ez egy teszt üzenet</h1>",
+            replyTo: email,
+            queue: "send",
+          },
+          {
+            headers: {
+              Authorization: `Api-Key <your_token>`, // Helyes formátum
+              "Content-Type": "application/json",
+            },
+          }
+      );
+      console.log("E-mail sikeresen elküldve:", response.data);
+  };
+
   return (
     <div>
       <Card className="bg-zinc-800 border-zinc-700">
         <CardContent className="p-6 h-full">
-          <form className="space-y-6 h-full">
+          <div className="space-y-6 h-full">
             <div>
               <label
                 htmlFor="name"
@@ -63,11 +95,13 @@ export default function Form() {
             </div>
 
             <div>
-              <Button className="w-full bg-zinc-700 hover:bg-zinc-600 text-zinc-100 mt-6">
+              <button
+                  className="w-full bg-zinc-700 hover:bg-zinc-600 text-zinc-100 mt-6"
+                  onClick={handleSubmit}>
                 Küldés
-              </Button>
+              </button>
             </div>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>
