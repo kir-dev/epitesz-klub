@@ -50,12 +50,11 @@ interface NavBarProps {
 }
 
 export default function NavBar(props: NavBarProps) {
-    navItems[1].children = props.categories;
-
-export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
     const pathname = usePathname();
+
+    navItems[1].children = props.categories;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
