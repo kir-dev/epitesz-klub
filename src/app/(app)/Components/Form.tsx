@@ -27,6 +27,9 @@ export default function Form() {
         } else {
             alert("Hiba történt az e-mail küldése közben!");
     }});
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
@@ -44,6 +47,7 @@ export default function Form() {
               <Input
                 id="name"
                 placeholder="Adja meg a nevét"
+                value={name}
                 className="pl-2 bg-zinc-900 border-zinc-700 text-zinc-100"
                 onChange={(e) => setName(e.target.value)}
               />
@@ -60,6 +64,7 @@ export default function Form() {
                 id="email"
                 type="email"
                 placeholder="Adja meg e-mail címét"
+                value={email}
                 className="bg-zinc-900 border-zinc-700 text-zinc-100 pl-2"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -75,6 +80,7 @@ export default function Form() {
               <Textarea
                 id="message"
                 placeholder="Írja be üzenetét"
+                value={message}
                 className="bg-zinc-900 border-zinc-700 text-zinc-100 min-h-[100px] pl-2"
                 style={{ resize: "none" }}
                 onChange={(e) => setMessage(e.target.value)}
