@@ -1,11 +1,11 @@
 'use client'
 
 import React from "react"
-import ContactForm from "@/app/(app)/Components/ContactForm"
 import ContactInfo from "@/app/(app)/Components/ContactInfo"
 import Link from "next/link";
 
 import dynamic from 'next/dynamic';
+import Form from "@/app/(app)/Components/Form";
 
 // Dinamikus importálás: térkép csak a böngészőben jelenik meg
 const Map = dynamic(() => import('@/app/(app)/Components/Map'), { ssr: false });
@@ -37,7 +37,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="order-2 lg:order-2">
-                        <ContactForm />
+                        <Form />
                     </div>
                     <Link className="space-y-8 h-full order-4 lg:order-4" href={"https://maps.app.goo.gl/bhmBaitSa5hAVXu69"} target="_blank">
                         <Map />
