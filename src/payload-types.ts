@@ -118,13 +118,13 @@ export interface User {
  */
 export interface Event {
   id: number;
-  típus: number | Category;
-  cím: string;
-  dátum: string;
-  kép: number | Media;
-  leírás: string;
-  főesemény: boolean;
-  aktuális: boolean;
+  type: number | Category;
+  title: string;
+  date: string;
+  picture: Media;
+  description: string;
+  mainEvent: boolean;
+  actual: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -134,8 +134,8 @@ export interface Event {
  */
 export interface Category {
   id: number;
-  név: string;
-  kep: number | Media;
+  name: string;
+  image: Media;
   icon?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -259,13 +259,13 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "events_select".
  */
 export interface EventsSelect<T extends boolean = true> {
-  típus?: T;
-  cím?: T;
-  dátum?: T;
-  kép?: T;
-  leírás?: T;
-  főesemény?: T;
-  aktuális?: T;
+  type?: T;
+  title?: T;
+  date?: T;
+  picture?: T;
+  description?: T;
+  mainEvent?: T;
+  actual?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -274,8 +274,8 @@ export interface EventsSelect<T extends boolean = true> {
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  név?: T;
-  kep?: T;
+  name?: T;
+  image?: T;
   icon?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -3,20 +3,24 @@ import type { CollectionConfig } from 'payload';
 export const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
-    useAsTitle: 'név',
+    useAsTitle: 'name',
+  },
+  access: {
+    read: () => true,
   },
   fields: [
     {
-      name: 'név',
+      name: 'name',
       label: 'Név',
       type: 'text',
       required: true,
     },
     {
-      name: 'kep',
+      name: 'image',
       label: 'Kép',
       type: 'upload',
         relationTo: 'media',
+        maxDepth: 1,
       required: true
     },
     {
@@ -24,6 +28,7 @@ export const Categories: CollectionConfig = {
       label: 'Icon',
       type: 'upload',
         relationTo: 'media',
+        maxDepth: 1,
       required: false
     },
   ],

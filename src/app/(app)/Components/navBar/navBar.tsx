@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
 
-interface NavItem {
+export interface NavItem {
     title: string
     href: string
     children?: NavItem[]
@@ -26,12 +26,7 @@ const navItems: NavItem[] = [
     },
     {
         title: "projektek",
-        href: "#",
-        children: [
-            {title: "projekt1", href: "#"},
-            {title: "projekt2", href: "#"},
-            {title: "projekt3", href: "#"},
-        ],
+        href: "/projektek",
         dropdownColor: "#F1CA47",
     },
     {
@@ -50,10 +45,16 @@ const navItems: NavItem[] = [
     },
 ]
 
-export default function NavBar() {
+interface NavBarProps {
+    categories: NavItem[]
+}
+
+export default function NavBar(props: NavBarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
     const pathname = usePathname();
+
+    navItems[1].children = props.categories;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -64,7 +65,7 @@ export default function NavBar() {
     }, [pathname]);
 
     return (
-        <header className="relative w-full z-50">
+        <header className="relative w-full z-[1000]">
             <div
                 className="absolute inset-0 bg-black"
                 style={{
