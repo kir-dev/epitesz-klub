@@ -1,6 +1,7 @@
-import { getPayload } from "payload";
+import {getPayload} from "payload";
 import config from "@payload-config";
 import CategoryEvents from "@/app/(app)/Components/projects/category";
+import PageTitle from "@/app/(app)/Components/PageTitle";
 
 type PageProps = {
     params: Promise<{ id: string }>;
@@ -8,7 +9,6 @@ type PageProps = {
 
 export default async function CategoryEventsPage(context: PageProps) {
     const { id } = await context.params;
-    console.log(id);
     if (id === "undefined") {
         return (
             <div>
@@ -26,9 +26,14 @@ export default async function CategoryEventsPage(context: PageProps) {
             }
         }
     });
-    console.log(events.docs);
+
+    const categoryName = events.docs[0].type.name;
 
     return (
-        <CategoryEvents events={events.docs} />
+        <><PageTitle title={categoryName}/>
+            <div>
+                <CategoryEvents events={events.docs}/>
+            </div>
+        </>
     );
 }

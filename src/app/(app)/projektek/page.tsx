@@ -1,7 +1,8 @@
 import React from "react";
 import ProjectGroups from "../Components/projects/project-groups";
-import { getPayload } from "payload";
+import {getPayload} from "payload";
 import config from "@payload-config";
+import PageTitle from "@/app/(app)/Components/PageTitle";
 
 export default async function ProjectsPage() {
     // Payload adatlekérés
@@ -11,7 +12,8 @@ export default async function ProjectsPage() {
     });
 
     return (
-        <div>
+        <div className="mt-12">
+            <PageTitle title={"Projektek"} />
             <ProjectGroups categories={categories} /> 
         </div>
     );
