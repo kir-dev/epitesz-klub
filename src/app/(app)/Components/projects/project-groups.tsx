@@ -1,12 +1,16 @@
 'use client';
 
-import { Category } from "@/payload-types";
+import {Category, Media} from "@/payload-types";
 import Image from 'next/image'
 import Link from 'next/link'
 
 interface ProjectGroupsProps {
     categories: Category[];
 }
+
+const isMedia = (image: number | Media): image is Media => {
+  return (image as Media).url !== undefined;
+};
 
 export default function ProjectGroups(props: ProjectGroupsProps) {
     console.log(props.categories);
@@ -16,8 +20,8 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
                 {props.categories.map((category, index) => (
                     <Link key={index} href={`/projektek/${category.id}`} className="block relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out group" >
                         <Image
-                        src={category.image.url ?? ''}
-                        alt={category.image.alt}
+                        src={isMedia(category.image) ? category.image.url ?? '' : ''}
+                        alt={isMedia(category.image) ? category.image.alt ?? '' : ''}
                         width={300}
                         height={200}
                         className="w-full h-auto object-cover"
