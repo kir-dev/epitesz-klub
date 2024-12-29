@@ -9,7 +9,7 @@ interface EventCardProps {
 }
 
 const EventCard: React.FC<EventCardProps> = ({ title, imageUrl, date, description }) => {
-    const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    const formattedDate = new Date(date).toLocaleDateString('hu-HU', {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
@@ -29,9 +29,9 @@ const EventCard: React.FC<EventCardProps> = ({ title, imageUrl, date, descriptio
                     {formattedDate}
                 </div>
             </div>
-            <div className="p-6">
+            <div className="p-6 max-h-64">
                 <h2 className="text-xl font-bold text-gray-100 mb-3">{title}</h2>
-                <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+                <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">{description}</p>
             </div>
         </div>
     );

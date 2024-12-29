@@ -16,7 +16,7 @@ export default async function Home() {
     const events = await payload.find({
         collection: "events",
         where: {
-            aktuális: {
+            actual: {
                 equals: true
             }
         }
@@ -32,7 +32,7 @@ export default async function Home() {
     return (
         <>
             <MyCarousel data={mediaData}/>
-            <div className="flex-grow">
+            <div className="contents">
                 <h1>Építész Klub</h1>
                 <Timeline events={events.docs}/>
             </div>
