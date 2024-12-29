@@ -27,7 +27,10 @@ export default async function CategoryEventsPage(context: PageProps) {
         }
     });
 
-    const categoryName = events.docs[0].type.name;
+    let categoryName = "Category";
+    if (typeof events.docs[0].type !== 'number') {
+        categoryName = events.docs[0].type.name;
+    }
 
     return (
         <><PageTitle title={categoryName}/>
