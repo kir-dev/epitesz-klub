@@ -19,7 +19,9 @@ export default async function Home() {
             actual: {
                 equals: true
             }
-        }
+        },
+        sort: '-date',
+        limit: 10
     });
 
     const mediaData = {

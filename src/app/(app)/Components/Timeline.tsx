@@ -26,15 +26,9 @@ export default function Timeline(props: timelineProps) {
     return (
         <div className="min-h-screen p-8 w-full relative" style={{ height: `${totalHeight}px` }}>
             {/* Timeline path */}
-            <div className="absolute left-0 top-0 w-full" style={{ height: `${totalHeight}px` }}>
+            <div className="absolute left-0 top-0 w-full">
                 <svg
-                    className="w-full"
-                    style={{
-                        height: `${totalHeight}px`,
-                        strokeWidth: '4px',
-                        stroke: 'white',
-                        fill: 'none'
-                    }}
+                    className="w-full stroke-white stroke-[4px]" style={{ height: `${totalHeight}px` }}
                 >
                     <path d={Array.isArray(props.events) ? props.events.map((event, index) => {
                         const y = index * 350 + 150;

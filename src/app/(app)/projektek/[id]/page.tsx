@@ -28,8 +28,22 @@ export default async function CategoryEventsPage(context: PageProps) {
     });
 
     let categoryName = "Category";
-    if (typeof events.docs[0].type !== 'number') {
-        categoryName = events.docs[0].type.name;
+    const category = await payload.find({
+        collection: "categories",
+        where: {
+            id: {
+                equals: id
+            }
+        }
+    });
+    categoryName = category.docs[0].name;
+    if (events.docs.length === 0) {
+        return (
+            <div>
+                <PageTitle title={categoryName}/>
+                <p>No events found for this category</p>
+            </div>
+        );
     }
 
     return (
