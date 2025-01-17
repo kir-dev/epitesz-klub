@@ -90,7 +90,14 @@ export interface Member {
   id: number;
   email: string;
   name: string;
-  role: 'elnok' | 'altalanos_alelnok' | 'kulkapcsolati_alelnok' | 'pr_alelnok' | 'gazdasagi_alelnok' | 'tag';
+  role:
+    | 'elnok'
+    | 'altalanos_alelnok'
+    | 'kulkapcsolati_alelnok'
+    | 'pr_alelnok'
+    | 'gazdasagi_alelnok'
+    | 'hr_alelnok'
+    | 'tag';
   profileImage: number | Media;
   updatedAt: string;
   createdAt: string;
@@ -121,7 +128,7 @@ export interface Event {
   type: number | Category;
   title: string;
   date: string;
-  picture: Media;
+  picture: number | Media;
   description: string;
   mainEvent: boolean;
   actual: boolean;
@@ -135,7 +142,7 @@ export interface Event {
 export interface Category {
   id: number;
   name: string;
-  image: Media;
+  image: number | Media;
   icon?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;

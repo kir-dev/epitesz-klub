@@ -45,6 +45,10 @@ export const Members: CollectionConfig = {
                     value: 'gazdasagi_alelnok',
                 },
                 {
+                    label: 'HR alelnök',
+                    value: 'hr_alelnok',
+                },
+                {
                     label: 'Tag',
                     value: 'tag',
                 }
