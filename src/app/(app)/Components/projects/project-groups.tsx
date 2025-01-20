@@ -18,7 +18,7 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
         <div className="flex items-center justify-center m-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
                 {props.categories.map((category, index) => (
-                    <Link key={index} href={`/projektek/${category.id}`} className="block relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out group" >
+                    <Link key={index} href={`/projektek/${category.id}`} className="block relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out group" >
                         <Image
                         src={isMedia(category.image) ? category.image.url ?? '' : ''}
                         alt={isMedia(category.image) ? category.image.alt ?? '' : ''}

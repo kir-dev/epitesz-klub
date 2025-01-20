@@ -28,7 +28,7 @@ export default function Presidents(props: MembersPageProps){
                         position.member ? (
                             <div
                                 key={index}
-                                className="text-center bg-gray-800 rounded-lg shadow-lg p-4"
+                                className="text-center bg-gray-800 shadow-lg p-4"
                             >
                                 <Image
                                     src={position.member.profileImage.url}
@@ -43,7 +43,7 @@ export default function Presidents(props: MembersPageProps){
                         ) : (
                             <div
                                 key={index}
-                                className="text-center bg-gray-800 rounded-lg shadow p-4"
+                                className="text-center bg-gray-800 shadow p-4"
                             >
                                 <p className="text-lg font-bold">{position.title}</p>
                                 <p className="">Nincs adat</p>
