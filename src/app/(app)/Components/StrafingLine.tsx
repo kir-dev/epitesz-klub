@@ -11,7 +11,7 @@ const isMedia = (picture: number | Media): picture is Media => {
     return (picture as Media).url !== undefined;
 };
 
-export default function Timeline(props: timelineProps) {
+export default function StrafingLine(props: timelineProps) {
     const [width, setWidth] = useState(0);
 
     useEffect(() => {

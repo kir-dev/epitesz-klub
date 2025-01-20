@@ -2,7 +2,7 @@ import config from "@payload-config";
 import {getPayload} from "payload";
 import {MyCarousel} from "./Components/Carousel";
 import {Media} from "@/payload-types";
-import Timeline from "@/app/(app)/Components/Timeline";
+import StrafingLine from "@/app/(app)/Components/StrafingLine";
 
 export default async function Home() {
     const payload = await getPayload({
@@ -36,7 +36,7 @@ export default async function Home() {
             <MyCarousel data={mediaData}/>
             <div className="contents">
                 <h1>Építész Klub</h1>
-                <Timeline events={events.docs}/>
+                <StrafingLine events={events.docs}/>
             </div>
         </>
     );
