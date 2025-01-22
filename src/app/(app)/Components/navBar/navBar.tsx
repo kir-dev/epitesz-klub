@@ -67,11 +67,9 @@ export default function NavBar(props: NavBarProps) {
     return (
         <header className="relative w-full z-[1000]">
             <div
-                className="absolute inset-0 bg-black"
+                className="absolute inset-0 bg-black lg:bg-contain bg-cover h-19"
                 style={{
                     backgroundImage: 'url(/NavBarBg.png)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'bottom',
                 }}
             />
 

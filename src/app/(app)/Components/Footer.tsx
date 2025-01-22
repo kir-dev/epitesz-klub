@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
         <footer className="w-full py-6 bg-gradient-to-r from-black via-white to-black text-black">
             <div className="w-full container mx-auto px-4 flex flex-col items-center text-center space-y-6">
                 <div className="flex items-center mb-4">
-                    <Mail className="h-5 w-5 mr-2 text-gray-800"/>
+                    <Mail className="h-5 w-5 mr-2 text-gray-800" />
                     <button
                         onClick={copyToClipboard}
                         className="text-gray-800 hover:text-gray-600 flex items-center"
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                             {copied && (
                                 <LuCopyCheck
                                     className="h-5 w-5 ml-1"
-                                    style={{color: 'rgb(21 128 61)'}}
+                                    style={{ color: 'rgb(21 128 61)' }}
                                 />
                             )}
                         </span>
@@ -38,26 +38,26 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="flex space-x-4 mb-4">
                     <Link href="https://www.instagram.com/epitesz_klub_szakkollegium/" target="_blank"
-                          rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
-                        <Instagram className="h-6 w-6"/>
+                        rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
+                        <Instagram className="h-6 w-6" />
                         <span className="sr-only">Instagram</span>
                     </Link>
                     <Link href="https://www.facebook.com/EpiteszKlubBME" target="_blank" rel="noopener noreferrer"
-                          className="text-gray-800 hover:text-gray-600">
-                        <Facebook className="h-6 w-6"/>
+                        className="text-gray-800 hover:text-gray-600">
+                        <Facebook className="h-6 w-6" />
                         <span className="sr-only">Facebook</span>
                     </Link>
                     <Link href="https://hu.linkedin.com/company/%C3%A9p%C3%ADt%C3%A9sz-klub" target="_blank"
-                          rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
-                        <Linkedin className="h-6 w-6"/>
+                        rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
+                        <Linkedin className="h-6 w-6" />
                         <span className="sr-only">LinkedIn</span>
                     </Link>
                 </div>
                 <div className="flex items-center text-gray-800">
-                    Készítette <TbHeartFilled style={{color: 'rgb(239 68 68)'}}/>
+                    Készítette <TbHeartFilled style={{ color: 'rgb(239 68 68)' }} />
                     -ből a{' '}
                     <a target='_blank' href='https://kir-dev.hu' rel='noreferrer'>
-                        <Image className='inline' src='/Kir-Dev-vertical.svg' alt='Kir-Dev' width={100} height={20}/>
+                        <Image className='inline' src='/Kir-Dev-vertical.svg' alt='Kir-Dev' width={100} height={20} />
                     </a>
                 </div>
             </div>
