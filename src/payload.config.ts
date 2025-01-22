@@ -12,6 +12,7 @@ import { Members } from './collections/Members'
 import { Users } from './collections/Users'
 import { Events } from './collections/Events'
 import { Categories } from './collections/Categories'
+import {vercelBlobStorage} from "@payloadcms/storage-vercel-blob";
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -38,6 +39,14 @@ export default buildConfig({
     sharp,
     plugins: [
         payloadCloudPlugin(),
+        vercelBlobStorage({
+            enabled: true, // Optional, defaults to true
+            collections: {
+                media: true
+            },
+            // Token provided by Vercel once Blob storage is added to your Vercel project
+            token: process.env.BLOB_READ_WRITE_TOKEN ? process.env.BLOB_READ_WRITE_TOKEN : "",
+        }),
         // storage-adapter-placeholder
     ],
 
