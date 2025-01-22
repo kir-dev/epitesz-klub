@@ -121,7 +121,7 @@ export interface Event {
   type: number | Category;
   title: string;
   date: string;
-  picture: Media;
+  picture: number | Media;
   description: string;
   mainEvent: boolean;
   actual: boolean;
@@ -135,7 +135,7 @@ export interface Event {
 export interface Category {
   id: number;
   name: string;
-  image: Media;
+  image: number | Media;
   icon?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
