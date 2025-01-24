@@ -33,11 +33,6 @@ const navItems: NavItem[] = [
     {
         title: "15 év",
         href: "/15-ev",
-        children: [
-            {title: "15 év", href: "#"},
-            {title: "16 év", href: "#"},
-            {title: "17 év", href: "#"},
-        ],
         dropdownColor: "#E8804C",
     },
     {

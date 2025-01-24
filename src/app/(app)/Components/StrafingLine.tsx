@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {Event, Media} from "@/payload-types";
 import EventCard from "@/app/(app)/Components/EventCard";
 
-interface timelineProps {
+interface lineProps {
     events: Event[];
 }
 
@@ -11,7 +11,7 @@ const isMedia = (picture: number | Media): picture is Media => {
     return (picture as Media).url !== undefined;
 };
 
-export default function StrafingLine(props: timelineProps) {
+export default function StrafingLine(props: lineProps) {
     const [width, setWidth] = useState(0);
 
     useEffect(() => {
