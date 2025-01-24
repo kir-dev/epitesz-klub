@@ -1,11 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import {Media} from "@/payload-types";
+import PageTitle from "@/app/(app)/Components/PageTitle";
 
 export default function AboutUs() {
     return (
         <div>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 min-h-screen">
+            <PageTitle title={"Rólunk"} />
+            <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
                 {/* Text Section */}
                 <div className="md:w-1/2">
                     <h1 className="text-3xl font-bold mb-4">Rólunk</h1>
@@ -42,7 +44,7 @@ export default function AboutUs() {
                     />
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 min-h-screen">
+            <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
                 <div className="md:w-1/2">
                     <h1 className="text-3xl font-bold mb-4">Műterem</h1>
                     <div className="w-16 h-1 bg-blue-500 mb-6"></div>

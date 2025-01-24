@@ -13,7 +13,7 @@ export default function Members(props: MemberProps){
                     {props.members.map((member, index) =>
                             <div
                                 key={index}
-                                className="text-center bg-gray-800 rounded-lg shadow-lg p-4"
+                                className="text-center bg-[#3E3F46] rounded-lg shadow-lg p-4"
                             >
                                 <Image
                                     src={member.profileImage.url}
