@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import {Media} from "@/payload-types";
 import PageTitle from "@/app/(app)/Components/PageTitle";
 
 export default function AboutUs() {
