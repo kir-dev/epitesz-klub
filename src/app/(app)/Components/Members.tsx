@@ -1,5 +1,8 @@
+'use client';
+
 import {Member} from "@/payload-types";
 import Image from "next/image";
+import {isMedia} from "@/app/(app)/Components/projects/category";
 
 interface MemberProps {
     members: Member[];
@@ -16,7 +19,7 @@ export default function Members(props: MemberProps){
                                 className="text-center bg-[#3E3F46] rounded-lg shadow-lg p-4"
                             >
                                 <Image
-                                    src={member.profileImage.url}
+                                    src={isMedia(member.profileImage) ? member.profileImage.url ?? '' : ''}
                                     alt={member.name}
                                     width={100}
                                     height={100}

@@ -1,5 +1,8 @@
+'use client';
+
 import {Member} from "@/payload-types";
 import Image from "next/image";
+import {isMedia} from "@/app/(app)/Components/projects/category";
 
 interface MembersPageProps {
     president: Member;
@@ -31,7 +34,7 @@ export default function Presidents(props: MembersPageProps){
                                 className="text-center bg-[#3E3F46] shadow-lg p-4"
                             >
                                 <Image
-                                    src={position.member.profileImage.url}
+                                    src={isMedia(position.member.profileImage) ? position.member.profileImage.url ?? '' : ''}
                                     alt={position.title}
                                     width={100}
                                     height={100}
