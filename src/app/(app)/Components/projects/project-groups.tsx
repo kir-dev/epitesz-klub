@@ -13,7 +13,6 @@ const isMedia = (image: number | Media): image is Media => {
 };
 
 export default function ProjectGroups(props: ProjectGroupsProps) {
-    console.log(props.categories);
     return (
         <div className="flex items-center justify-center m-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
