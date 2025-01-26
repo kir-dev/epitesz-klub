@@ -23,16 +23,16 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
                         <Image
                         src={isMedia(category.image) ? category.image.url ?? '' : ''}
                         alt={isMedia(category.image) ? category.image.alt ?? '' : ''}
-                        width={300}
-                        height={200}
-                        className="w-full h-full object-cover"
+                        width={350}
+                        height={350}
+                        className='aspect-square w-64 h-64 object-cover'
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col items-center justify-center opacity-100 group-hover:bg-opacity-0 transition-opacity duration-300">
                             <Image
                                 src={isMedia(category.icon) ? category.icon.url ?? '' : ''}
                                 alt={isMedia(category.icon) ? category.icon.url ?? '' : ''}
-                                width={200}
-                                height={200}
+                                width={150}
+                                height={150}
                             />
                         </div>
                     </Link>
