@@ -8,8 +8,9 @@ interface ProjectGroupsProps {
     categories: Category[];
 }
 
-const isMedia = (image: number | Media): image is Media => {
-  return (image as Media).url !== undefined;
+const isMedia = (image: null | undefined | number | Media): image is Media => {
+    if (image === null || image === undefined) return false;
+    return (image as Media).url !== undefined;
 };
 
 export default function ProjectGroups(props: ProjectGroupsProps) {
@@ -24,12 +25,15 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
                         alt={isMedia(category.image) ? category.image.alt ?? '' : ''}
                         width={300}
                         height={200}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-100 group-hover:bg-opacity-0 transition-opacity duration-300">
-                            <p className="text-white text-center font-semibold px-2 py-1 rounded">
-                                {category.name}
-                            </p>
+                        <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col items-center justify-center opacity-100 group-hover:bg-opacity-0 transition-opacity duration-300">
+                            <Image
+                                src={isMedia(category.icon) ? category.icon.url ?? '' : ''}
+                                alt={isMedia(category.icon) ? category.icon.url ?? '' : ''}
+                                width={200}
+                                height={200}
+                            />
                         </div>
                     </Link>
                 ))}
