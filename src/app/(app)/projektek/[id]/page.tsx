@@ -24,7 +24,8 @@ export default async function CategoryEventsPage(context: PageProps) {
             type: {
                 equals: id
             }
-        }
+        },
+        sort: '-date'
     });
 
     let categoryName = "Category";
