@@ -47,8 +47,7 @@ export default function Timeline({ events }: TimelineProps) {
                         <div
                             key={item.date.toString()}
                             className={`timeline-item relative mb-16 transition-all duration-500 ease-in-out ${index <= activeIndex ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
-                            data-index={index}
-                        >
+                            data-index={index}>
                             <div className="absolute left-0 top-0 w-8 h-8 -ml-3.5 bg-black border-2 border-[#3E3F46] flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
                                 <span className="text-gray-400 text-sm font-bold">{new Date(item.date).getFullYear().toString().slice(-2)}</span>
                             </div>
@@ -63,8 +62,7 @@ export default function Timeline({ events }: TimelineProps) {
                                                 alt={`Image for year ${new Date(item.date).getFullYear()}`}
                                                 layout="fill"
                                                 objectFit="cover"
-                                                className="transition-transform duration-300 hover:scale-105"
-                                            />
+                                                className="transition-transform duration-300 hover:scale-105"/>
                                         </div>
                                     )}
                                 </div>
