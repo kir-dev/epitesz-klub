@@ -15,12 +15,12 @@ export interface NavItem {
 const navItems: NavItem[] = [
     {
         title: "rólunk",
-        href: "#",
+        href: "/about-us",
         children: [
-            {title: "történetünk", href: "#"},
-            {title: "tagok", href: "#"},
-            {title: "taggá válás", href: "#"},
-            {title: "SZMSZ", href: "#"},
+            {title: "történetünk", href: "/about-us"},
+            {title: "tagok", href: "/about-us/members"},
+            {title: "taggá válás", href: "/about-us/becoming-a-member"},
+            {title: "SZMSZ", href: "/about-us/szmsz"},
         ],
         dropdownColor: "#3F6080",
     },

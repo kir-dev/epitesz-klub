@@ -90,7 +90,14 @@ export interface Member {
   id: number;
   email: string;
   name: string;
-  role: 'elnok' | 'altalanos_alelnok' | 'kulkapcsolati_alelnok' | 'pr_alelnok' | 'gazdasagi_alelnok' | 'tag';
+  role:
+    | 'elnok'
+    | 'altalanos_alelnok'
+    | 'kulkapcsolati_alelnok'
+    | 'pr_alelnok'
+    | 'gazdasagi_alelnok'
+    | 'hr_alelnok'
+    | 'tag';
   profileImage: number | Media;
   updatedAt: string;
   createdAt: string;

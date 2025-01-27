@@ -7,7 +7,7 @@ interface CategoryEventProps {
   events: Event[];
 }
 
-const isMedia = (picture: number | Media): picture is Media => {
+export const isMedia = (picture: number | Media): picture is Media => {
   return (picture as Media).url !== undefined;
 };
 

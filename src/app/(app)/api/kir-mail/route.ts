@@ -6,7 +6,6 @@ export const dynamic = 'force-dynamic'
 export async function POST(request: NextRequest) {
     const body = await request.json()
 
-    console.log(body);
     const response = await axios.post(
         process.env.KIR_MAIL_URL ?? '',
         {
@@ -27,6 +26,5 @@ export async function POST(request: NextRequest) {
             },
         }
     );
-    console.log("E-mail sikeresen elküldve:", response.data);
     return NextResponse.json(response.data);
 }
