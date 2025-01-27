@@ -30,7 +30,7 @@ export default function ProjectGroups(props: ProjectGroupsProps) {
                         <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col items-center justify-center opacity-100 group-hover:bg-opacity-0 transition-opacity duration-300">
                             <Image
                                 src={isMedia(category.icon) ? category.icon.url ?? '' : ''}
-                                alt={isMedia(category.icon) ? category.icon.url ?? '' : ''}
+                                alt={isMedia(category.icon) ? category.icon.alt ?? '' : ''}
                                 width={150}
                                 height={150}
                             />
