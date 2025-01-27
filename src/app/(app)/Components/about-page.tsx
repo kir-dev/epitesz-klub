@@ -72,7 +72,7 @@ export default function AboutUs() {
                 }
                 <div className="md:w-1/2">
                     <Image
-                        src="/rolunk.jpg"
+                        src="/workshop.jpg"
                         alt="Artwork"
                         width={600}
                         height={400}
