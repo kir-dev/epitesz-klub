@@ -16,7 +16,7 @@ const EventCard: React.FC<EventCardProps> = ({ title, imageUrl, date, descriptio
     });
 
     return (
-        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-sm">
+        <div className="bg-[#3E3F46] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-sm">
             <div className="relative h-48">
                 <Image
                     src={imageUrl}

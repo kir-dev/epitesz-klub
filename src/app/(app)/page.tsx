@@ -35,7 +35,6 @@ export default async function Home() {
         <>
             <MyCarousel data={mediaData}/>
             <div className="contents">
-                <h1>Építész Klub</h1>
                 <StrafingLine events={events.docs}/>
             </div>
         </>

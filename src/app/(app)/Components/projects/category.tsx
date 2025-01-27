@@ -12,9 +12,6 @@ export const isMedia = (picture: number | Media): picture is Media => {
 };
 
 export default function CategoryEvents(props: CategoryEventProps) {
-  console.log("Ok");
-  console.log(props.events);
-
   return (
     <div className="container mx-auto px-4 py-8">
       {props.events.map((event, index) => (

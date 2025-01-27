@@ -4,6 +4,7 @@ import * as React from "react"
 import {useEffect, useState} from "react"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
+import Image from "next/image";
 
 export interface NavItem {
     title: string
@@ -31,12 +32,7 @@ const navItems: NavItem[] = [
     },
     {
         title: "15 év",
-        href: "#",
-        children: [
-            {title: "15 év", href: "#"},
-            {title: "16 év", href: "#"},
-            {title: "17 év", href: "#"},
-        ],
+        href: "/15-ev",
         dropdownColor: "#E8804C",
     },
     {
@@ -75,13 +71,15 @@ export default function NavBar(props: NavBarProps) {
 
             <div className="relative mx-auto max-w-7xl px-4 py-6">
                 <div className="flex items-center justify-between">
-                    {/* Logo/Title */}
+                    <div className="flex items-center space-x-4">
+                        <Image src="/logo.png" alt="Építész Klub Szakkollégium" width={50} height={50} />
                     <Link
                         href="/"
                         className="px-6 py-2 text-2xl font-bold text-white"
                     >
                         Építész Klub Szakkollégium
                     </Link>
+                    </div>
 
                     <button
                         className="text-white lg:hidden p-2"
