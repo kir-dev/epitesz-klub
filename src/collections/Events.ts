@@ -1,9 +1,10 @@
-import type { CollectionConfig } from 'payload'
+import type {CollectionConfig} from 'payload'
 
 export const Events: CollectionConfig = {
   slug: 'events',
   admin: {
     useAsTitle: 'title',
+    description: 'Ezek az események jelennek meg a projekteken belül.',
   },
   fields: [
     {
