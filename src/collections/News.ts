@@ -25,7 +25,7 @@ export const News: CollectionConfig = {
                     label: 'Leírás',
                     type: 'textarea',
                     required: true,
-                    maxLength: 150,
+                    maxLength: 550,
                 },
             ],
         }
