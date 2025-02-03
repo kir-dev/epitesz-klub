@@ -10,6 +10,7 @@ export default async function ProjectsPage() {
     const { docs: categories } = await payload.find({
         collection: "categories",
     });
+    categories.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
     return (
         <div className="mt-12">

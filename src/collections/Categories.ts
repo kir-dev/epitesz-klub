@@ -31,5 +31,11 @@ export const Categories: CollectionConfig = {
         maxDepth: 1,
       required: false
     },
+    {
+      name: 'order',
+      label: 'Sorszám',
+      type: 'number',
+      required: false,
+    },
   ],
 };

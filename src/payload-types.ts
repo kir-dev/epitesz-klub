@@ -144,6 +144,7 @@ export interface Category {
   name: string;
   image: number | Media;
   icon?: (number | null) | Media;
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -284,6 +285,7 @@ export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   image?: T;
   icon?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
