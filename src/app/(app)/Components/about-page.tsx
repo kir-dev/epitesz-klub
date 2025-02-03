@@ -1,16 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import PageTitle from "@/app/(app)/Components/PageTitle";
+import { Publication } from "@/payload-types";
+import Link from "next/link";
 
-export default function AboutUs() {
+interface AboutUsProps {
+    link: Publication;
+}
+
+export default function AboutUs(props: AboutUsProps) {
     return (
         <div>
-            <PageTitle title={"Rólunk"} />
             <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
                 {/* Text Section */}
                 <div className="md:w-1/2">
-                    <h1 className="text-3xl font-bold mb-4">Rólunk</h1>
-                    <div className="w-16 h-1 bg-blue-500 mb-6"></div>
+                    <PageTitle title={"Rólunk"} />
                     <p className="text-lg leading-relaxed mb-6">
                         Az Építészettel, annak „kemény magvával” és perifériájával,
                         folyamatával és aktualitásaival foglalkozunk. Szerepvállalásunk a
@@ -22,12 +26,13 @@ export default function AboutUs() {
                         beszélgetünk, akik az építészet határterületein tevékenykednek.
                         Élménnyé tesszük az építészetet. Az idei kiadványunk letölthető pdf
                         formátumban,{" "}
-                        <a
-                            href="#"
+                        <Link
+                            href={props.link.url?.toString()}
+                            download={`${props.link.name}.pdf`}
                             className="text-blue-500 underline hover:text-blue-700"
                         >
                             itt
-                        </a>
+                        </Link>
                         .
                     </p>
                 </div>
@@ -45,8 +50,7 @@ export default function AboutUs() {
             </div>
             <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
                 <div className="md:w-1/2">
-                    <h1 className="text-3xl font-bold mb-4">Műterem</h1>
-                    <div className="w-16 h-1 bg-blue-500 mb-6"></div>
+                    <PageTitle title={"Műterem"} />
                     <p className="text-lg leading-relaxed mb-6">
                         A Bercsényi Építész Kollégium 5. emeletén létrehoztuk az építészhallgatók Műtermét, ami
                         közösségi
