@@ -32,7 +32,7 @@ const NewsCard: React.FC<EventCardProps> = ({ alt, imageUrl, date, description }
                 </div>
             )}
             <div className="p-6 max-h-64">
-                <p className="text-gray-300 text-sm leading-normal line-clamp-4">{description}</p>
+                <p className="text-gray-300 text-sm leading-normal line-clamp-6">{description}</p>
             </div>
         </div>
     );

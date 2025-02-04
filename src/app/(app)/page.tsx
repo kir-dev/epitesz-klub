@@ -10,7 +10,12 @@ export default async function Home() {
     });
 
     const media = await payload.find({
-        collection: "media"
+        collection: "media",
+        where: {
+            carousel: {
+                equals: true
+            }
+        }
     });
 
     const news = await payload.find({
