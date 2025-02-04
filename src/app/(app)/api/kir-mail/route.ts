@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
                 email: body.email || "teszt@example.com",
             },
             to: "liptak.peti.98@gmail.com",
-            subject: "Próba5",
+            subject: "Weboldalról érkezett üzenet",
             html: body.message || "<h1>Ez egy teszt üzenet</h1>",
             replyTo: body.email,
             queue: "send",
