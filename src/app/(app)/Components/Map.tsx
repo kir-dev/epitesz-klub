@@ -11,8 +11,8 @@ export default function Map() {
 
             const map = L.map('map', {
                 attributionControl: false,
-                zoomControl: false,
-                dragging: false,
+                zoomControl: true,
+                dragging: true,
                 scrollWheelZoom: false,
                 doubleClickZoom: false,
                 boxZoom: false,
