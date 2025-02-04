@@ -14,6 +14,12 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'carousel',
+      label: 'Képnézegető',
+      type: 'checkbox',
+      required: true,
+    },
   ],
   upload: true,
 }
