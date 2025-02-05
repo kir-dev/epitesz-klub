@@ -1,9 +1,10 @@
-import type { CollectionConfig } from 'payload';
+import type {CollectionConfig} from 'payload';
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
     useAsTitle: 'name',
+    description: 'Projektek, amelyek a projektek oldalon megjelennek.',
   },
   access: {
     read: () => true,

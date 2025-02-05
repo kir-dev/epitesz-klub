@@ -4,6 +4,7 @@ export const Members: CollectionConfig = {
     slug: 'members',
     admin: {
         useAsTitle: 'email',
+        description: 'A tagok adatai. Ezek a tagok jelennek meg a tagok oldalon.',
     },
     fields: [
         {

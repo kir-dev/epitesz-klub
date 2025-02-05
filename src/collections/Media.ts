@@ -1,7 +1,10 @@
-import type { CollectionConfig } from 'payload'
+import type {CollectionConfig} from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  admin: {
+    description: 'Képek, amelyek a weboldalon megjelennek.',
+    },
   access: {
     read: () => true,
   },
@@ -9,6 +12,12 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
+      required: true,
+    },
+    {
+      name: 'carousel',
+      label: 'Képnézegető',
+      type: 'checkbox',
       required: true,
     },
   ],
