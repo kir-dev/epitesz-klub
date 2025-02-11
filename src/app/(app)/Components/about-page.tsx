@@ -27,8 +27,8 @@ export default function AboutUs(props: AboutUsProps) {
                         Élménnyé tesszük az építészetet. Az idei kiadványunk letölthető pdf
                         formátumban,{" "}
                         <Link
-                            href={props.link.url?.toString()}
-                            download={`${props.link.name}.pdf`}
+                            href={props.link?.url ? props.link.url : "#"}
+                            download={`${props.link?.name ? props.link.name : "#"}.pdf`}
                             className="text-blue-500 underline hover:text-blue-700"
                         >
                             itt
