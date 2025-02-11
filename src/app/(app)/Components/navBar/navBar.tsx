@@ -13,7 +13,7 @@ export interface NavItem {
     dropdownColor?: string
 }
 
-const navItems: NavItem[] = [
+export const navItems: NavItem[] = [
     {
         title: "rólunk",
         href: "/about-us",
@@ -43,6 +43,7 @@ const navItems: NavItem[] = [
 
 interface NavBarProps {
     categories: NavItem[]
+    transparent: boolean
 }
 
 export default function NavBar(props: NavBarProps) {
@@ -65,7 +66,7 @@ export default function NavBar(props: NavBarProps) {
             <div
                 className="absolute inset-0 bg-black lg:bg-contain bg-cover h-19"
                 style={{
-                    backgroundImage: 'url(/NavBarBg.png)',
+                    backgroundImage: `url(${props.transparent ? '' : '/NavBarBg.png'})`,
                 }}
             />
 

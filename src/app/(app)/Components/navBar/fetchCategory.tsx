@@ -1,8 +1,8 @@
-import { getPayload } from "payload";
+import {getPayload} from "payload";
 import config from "@payload-config";
-import NavBar, { NavItem } from "./navBar";
+import NavBar, {NavItem} from "./navBar";
 
-export default async function fetchNavItems() {
+export default async function fetchNavItems(transparent: boolean) {
     const payload = await getPayload({ config })
     const categories = await payload.find({
         collection: "categories",
@@ -14,6 +14,6 @@ export default async function fetchNavItems() {
     }))
 
     return (
-        <NavBar categories={categoryItems} />
+        <NavBar categories={categoryItems} transparent={transparent} />
     )
 }
