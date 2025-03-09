@@ -1,18 +1,19 @@
 // storage-adapter-import-placeholder
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import {postgresAdapter} from '@payloadcms/db-postgres'
+import {payloadCloudPlugin} from '@payloadcms/payload-cloud'
+import {lexicalEditor} from '@payloadcms/richtext-lexical'
 import path from 'path'
-import { buildConfig } from 'payload'
+import {buildConfig} from 'payload'
 import sharp from 'sharp'
-import { fileURLToPath } from 'url'
+import {fileURLToPath} from 'url'
 
-import { Media } from './collections/Media'
-import { Members } from './collections/Members'
-import { Users } from './collections/Users'
-import { Events } from './collections/Events'
-import { Categories } from './collections/Categories'
+import {Media} from './collections/Media'
+import {Members} from './collections/Members'
+import {Users} from './collections/Users'
+import {Events} from './collections/Events'
+import {Categories} from './collections/Categories'
 import {vercelBlobStorage} from "@payloadcms/storage-vercel-blob";
+import {News} from "@/collections/News";
 import {Publications} from "@/collections/Publications";
 
 
@@ -26,7 +27,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [ Media, Members, Users, Events, Categories, Publications ],
+    collections: [ Media, Members, Users, Events, Categories, News, Publications ],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {

@@ -16,6 +16,7 @@ export interface Config {
     users: User;
     events: Event;
     categories: Category;
+    news: News;
     publications: Publication;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -28,6 +29,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
     publications: PublicationsSelect<false> | PublicationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -172,6 +174,18 @@ export interface Publication {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: number;
+  date: string;
+  picture?: (number | null) | Media;
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -196,6 +210,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: number | News;
       } | null)
     | ({
         relationTo: 'publications';
@@ -312,6 +330,17 @@ export interface CategoriesSelect<T extends boolean = true> {
   image?: T;
   icon?: T;
   order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  date?: T;
+  picture?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

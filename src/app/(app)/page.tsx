@@ -10,16 +10,16 @@ export default async function Home() {
     });
 
     const media = await payload.find({
-        collection: "media"
-    });
-
-    const events = await payload.find({
-        collection: "events",
+        collection: "media",
         where: {
-            actual: {
+            carousel: {
                 equals: true
             }
-        },
+        }
+    });
+
+    const news = await payload.find({
+        collection: "news",
         sort: '-date',
         limit: 10
     });
@@ -35,7 +35,7 @@ export default async function Home() {
         <>
             <MyCarousel data={mediaData}/>
             <div className="contents">
-                <StrafingLine events={events.docs}/>
+                <StrafingLine news={news.docs}/>
             </div>
         </>
     );
