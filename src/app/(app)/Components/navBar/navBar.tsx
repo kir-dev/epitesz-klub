@@ -12,7 +12,7 @@ export interface NavItem {
     children?: NavItem[]
     dropdownColor?: string
 }
-
+const currentYear = new Date().getFullYear()
 export const navItems: NavItem[] = [
     {
         title: "rólunk",
@@ -31,7 +31,7 @@ export const navItems: NavItem[] = [
         dropdownColor: "#F1CA47",
     },
     {
-        title: "15 év",
+        title: `${currentYear - 2008} év`,
         href: "/15-ev",
         dropdownColor: "#E8804C",
     },
@@ -86,7 +86,7 @@ export default function NavBar(props: NavBarProps) {
                 }}
             />
 
-            <div className="relative mx-auto max-w-fit py-6 text-2xl">
+            <div className="relative mx-auto py-6 text-2xl">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                         <Image src="/logo.png" alt="Építész Klub Szakkollégium" width={50} height={50} />
