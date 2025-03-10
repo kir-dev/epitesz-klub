@@ -43,7 +43,7 @@ export const navItems: NavItem[] = [
 
 interface NavBarProps {
     categories: NavItem[]
-    transparent: boolean
+    homePage: boolean
 }
 
 export default function NavBar(props: NavBarProps) {
@@ -53,30 +53,46 @@ export default function NavBar(props: NavBarProps) {
 
     navItems[1].children = props.categories;
 
+    const [navbarBg, setNavbarBg] = useState("bg-transparent");
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
+
     useEffect(() => {
+        const handleScroll = () => {
+            const carousel = document.getElementById("carousel");
+            if (carousel) {
+                const carouselBottom = carousel.getBoundingClientRect().bottom;
+                if (carouselBottom <= 0) {
+                    setNavbarBg("bg-black");
+                } else {
+                    setNavbarBg("bg-transparent");
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
         setIsOpen(false);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [pathname]);
 
     return (
-        <header className="relative w-full z-[1000]">
+        <header className={`${props.homePage ? 'sticky top-0 left-0' : 'relative'} w-full z-[1000]`}>
             <div
-                className="absolute inset-0 bg-black lg:bg-contain bg-cover h-19"
+                className={`absolute inset-0 lg:bg-contain bg-cover h-19 ${navbarBg}`}
                 style={{
-                    backgroundImage: `url(${props.transparent ? '' : '/NavBarBg.png'})`,
+                    backgroundImage: `url(${props.homePage ? undefined : '/NavBarBg.png'})`,
                 }}
             />
 
-            <div className="relative mx-auto max-w-7xl px-4 py-6">
+            <div className="relative mx-auto max-w-fit py-6 text-2xl">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                         <Image src="/logo.png" alt="Építész Klub Szakkollégium" width={50} height={50} />
                     <Link
                         href="/"
-                        className="px-6 py-2 text-2xl font-bold text-white"
+                        className="px-6 py-2 text-4xl font-bold text-white"
                     >
                         Építész Klub Szakkollégium
                     </Link>
@@ -159,6 +175,7 @@ export default function NavBar(props: NavBarProps) {
                     </div>
                 )}
             </div>
+            <hr className="border-2 border-white" />
         </header>
     )
 }

@@ -41,6 +41,7 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
         centerMode: true,
         infinite: true,
         slidesToShow: 1,
+        slidesToScroll: 1,
         speed: 500,
         autoplay: true,
         autoplaySpeed: 5000,
@@ -52,7 +53,7 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
         <div className="slider-container">
             <Slider {...settings}>
                 {data.docs.map((doc, index) => (
-                    <div key={index} className="p-2 flex h-48 sm:h-64 md:h-96 w-auto outline-none">
+                    <div key={index} className="p-2 flex h-screen w-auto outline-none">
                         <img src={doc.url} alt={doc.alt} className="object-cover h-full w-auto"/>
                     </div>
                 ))}

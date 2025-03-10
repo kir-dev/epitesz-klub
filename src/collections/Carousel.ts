@@ -3,7 +3,7 @@ import type {CollectionConfig} from 'payload'
 export const Carousel: CollectionConfig = {
     slug: 'carousel',
     admin: {
-        description: 'Képek, amelyek megjelenneka képnézegetőbe.',
+        description: 'Képek, amelyek megjelennek a képnézegetőbe.',
     },
     access: {
         read: () => true,
