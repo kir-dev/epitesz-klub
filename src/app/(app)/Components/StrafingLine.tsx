@@ -24,11 +24,11 @@ export default function StrafingLine(props: lineProps) {
     const totalHeight = props.news.length * 350 + 150;
 
     return (
-        <div className="min-h-screen p-8 w-full relative" style={{ height: `${totalHeight}px` }}>
+        <div className="min-h-screen py-8 w-full relative" style={{ height: `${totalHeight}px` }}>
             {/* Timeline path */}
             <div className="absolute left-0 top-0 w-full">
                 <svg
-                    className="w-full stroke-white stroke-[4px]" style={{ height: `${totalHeight}px` }}
+                    className="w-full stroke-white stroke-[4px] overflow-visible" style={{ height: `${totalHeight}px` }}
                 >
                     <path d={Array.isArray(props.news) ? props.news.map((event, index) => {
                         const y = index * 350 + 150;
@@ -53,7 +53,7 @@ export default function StrafingLine(props: lineProps) {
                     return (
                         <div
                             key={post.id}
-                            className={`absolute ${isLeft ? 'left-10' : 'right-0'} w-1/3`}
+                            className={`absolute ${isLeft ? 'left-0' : 'right-0'} w-1/3`}
                             style={{ top: `${index * 350}px` }}
                         >
                             <NewsCard

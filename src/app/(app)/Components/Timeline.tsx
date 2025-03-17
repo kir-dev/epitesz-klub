@@ -38,7 +38,7 @@ export default function Timeline({ events }: TimelineProps) {
     }, [])
 
     return (
-        <div className="bg-black min-h-screen p-8">
+        <div className="bg-black min-h-screen py-8">
             <PageTitle title={`${currentYear - 2008} év`} />
             <div className="max-w-4xl mx-auto" ref={timelineRef}>
                 <div className="relative">

@@ -11,7 +11,7 @@ interface AboutUsProps {
 export default function AboutUs(props: AboutUsProps) {
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
+            <div className="flex flex-col md:flex-row justify-between gap-8 py-8 min-h-screen">
                 {/* Text Section */}
                 <div className="md:w-1/2">
                     <PageTitle title={"Rólunk"} />
@@ -48,7 +48,7 @@ export default function AboutUs(props: AboutUsProps) {
                     />
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-8 p-8 min-h-screen">
+            <div className="flex flex-col md:flex-row justify-between gap-8 py-8 min-h-screen">
                 <div className="md:w-1/2">
                     <PageTitle title={"Műterem"} />
                     <p className="text-lg leading-relaxed mb-6">
