@@ -8,18 +8,13 @@ export default async function Home() {
     });
 
     const events = await payload.find({
-        collection: "events",
-        where: {
-            mainEvent: {
-                equals: true
-            }
-        },
-        sort: 'date'
+        collection: "news",
+        sort: '-date'
     });
 
     return (
         <main className="bg-gray-900 min-h-screen">
-            <Timeline events={events.docs || []} news={false}/>
+            <Timeline events={events.docs || []} news={true}/>
         </main>
     )
 }

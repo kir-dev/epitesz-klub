@@ -14,6 +14,10 @@ export interface NavItem {
 const currentYear = new Date().getFullYear()
 export const navItems: NavItem[] = [
     {
+        title: "aktuális",
+        href: "/recent",
+    },
+    {
         title: "rólunk",
         href: "/about-us",
         children: [
@@ -50,7 +54,7 @@ export default function NavBar(props: NavBarProps) {
     const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
     const pathname = usePathname();
 
-    navItems[1].children = props.categories;
+    navItems[2].children = props.categories;
 
     const [navbarBg, setNavbarBg] = useState("bg-transparent");
     const toggleMenu = () => {

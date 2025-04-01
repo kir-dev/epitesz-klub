@@ -13,7 +13,7 @@ export const Events: CollectionConfig = {
       type: 'relationship',
       relationTo: 'categories',
       maxDepth: 1,
-      required: true,
+      required: false,
     },
     {
       name: 'title',

@@ -57,6 +57,7 @@ export default function StrafingLine(props: lineProps) {
                             style={{ top: `${index * 350}px` }}
                         >
                             <NewsCard
+                                href={`/recent#news-${post.id}`}
                                 alt={isMedia(post.picture) ? post.picture.alt ?? '' : ''}
                                 imageUrl={isMedia(post.picture) ? post.picture.url ?? '' : ''}
                                 date={post.date}

@@ -130,7 +130,7 @@ export interface User {
  */
 export interface Event {
   id: number;
-  type: number | Category;
+  type?: (number | null) | Category;
   title: string;
   date: string;
   picture: number | Media;
@@ -159,6 +159,7 @@ export interface Category {
  */
 export interface News {
   id: number;
+  title: string;
   date: string;
   picture?: (number | null) | Media;
   description: string;
@@ -339,6 +340,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  * via the `definition` "news_select".
  */
 export interface NewsSelect<T extends boolean = true> {
+  title?: T;
   date?: T;
   picture?: T;
   description?: T;

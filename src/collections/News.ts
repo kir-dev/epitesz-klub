@@ -8,6 +8,12 @@ export const News: CollectionConfig = {
             },
             fields: [
                 {
+                    name: "title",
+                    label: "Cím",
+                    type: "text",
+                    required: true,
+                },
+                {
                     name: 'date',
                     label: 'Dátum',
                     type: 'date',
