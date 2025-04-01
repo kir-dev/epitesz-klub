@@ -4,7 +4,6 @@ import * as React from "react"
 import {useEffect, useState} from "react"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
-import Image from "next/image";
 
 export interface NavItem {
     title: string
@@ -78,18 +77,18 @@ export default function NavBar(props: NavBarProps) {
     }, [pathname]);
 
     return (
-        <header className={`${props.homePage ? 'sticky top-0 left-0' : 'relative'} w-full z-[1000]`}>
+        <header className={`${props.homePage ? 'fixed top-0 left-0' : 'relative'} w-full z-10`}>
             <div
-                className={`absolute inset-0 lg:bg-contain bg-cover h-19 ${navbarBg}`}
+                className={`${props.homePage ? "block" : "block"} absolute inset-0 lg:bg-contain bg-cover h-19 ${navbarBg}`}
                 style={{
                     backgroundImage: `url(${props.homePage ? undefined : '/NavBarBg.png'})`,
                 }}
             />
 
-            <div className="relative mx-auto py-6 text-2xl">
+            <div className="mx-8 py-6 text-2xl">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                        <Image src="/logo.png" alt="Építész Klub Szakkollégium" width={50} height={50} />
+                    <div className="flex items-center space-x-4 z-30">
+                        <img src="/logo.png" alt="Építész Klub Szakkollégium" width={50}/>
                     <Link
                         href="/"
                         className="px-6 py-2 text-4xl font-bold text-white"

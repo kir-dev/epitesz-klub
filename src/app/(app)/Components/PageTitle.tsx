@@ -4,7 +4,7 @@ export default function PageTitle({ title }: { title: string }) {
     return (
         <>
             <div className="absolute top-0 right-0 w-1/3 h-1/3 my-12 bg-gradient-radial from-zinc-800 to-transparent opacity-20 blur-3xl"></div>
-            <div className="max-w-7xl mx-auto">
+            <div className="mx-8">
                 <div className="mb-12">
                     <div className="flex items-center gap-4 mb-4">
                         <h1 className="text-4xl font-bold tracking-tight text-zinc-100">

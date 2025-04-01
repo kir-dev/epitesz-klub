@@ -28,7 +28,7 @@ export default async function Home() {
 
     return (
         <>
-            <div id="carousel" className="relative top-0 left-0 w-full h-[calc(100vh-4rem)] z-40">
+            <div id="carousel" className="relative w-full h-screen z-40">
                 <MyCarousel data={mediaData}/>
             </div>
             <div className="relative z-30">

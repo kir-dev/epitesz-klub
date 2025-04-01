@@ -50,7 +50,7 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
     };
 
     return (
-        <div className="slider-container">
+        <div className="slider-container" id="carousel">
             <Slider {...settings}>
                 {data.docs.map((doc, index) => (
                     <div key={index} className="p-2 flex h-screen w-auto outline-none">

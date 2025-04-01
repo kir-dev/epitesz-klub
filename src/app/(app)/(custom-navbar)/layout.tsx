@@ -32,7 +32,7 @@ export default function RootLayout({
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        <div className={`sticky top-0 left-0 w-full z-50 bg-transparent`}>
+        <div className={`fixed top-0 left-0 w-full z-50 bg-transparent`}>
             {fetchNavItems(true)}
         </div>
         <div className=' 2xl:mx-16 xl:mx-8 max-xl:mx-4 max-md:mx-2 min-h-screen'>
