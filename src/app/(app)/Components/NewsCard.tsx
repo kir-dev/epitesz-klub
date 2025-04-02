@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Link from 'next/link';
 import {cn} from "@/lib/utils";
 
@@ -21,6 +21,28 @@ const NewsCard: React.FC<NewsCardProps> = ({
     imageAlt = "News image",
     textOnLeft = false,
 }) => {
+    const [isVertical, setIsVertical] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (image && imgRef.current) {
+            const checkImageOrientation = () => {
+                const img = imgRef.current;
+                if (img && img.complete) {
+                    setIsVertical(img.naturalHeight > img.naturalWidth);
+                }
+            };
+
+            // Check when the image loads
+            imgRef.current.onload = checkImageOrientation;
+
+            // Also check immediately if the image is already cached
+            if (imgRef.current.complete) {
+                checkImageOrientation();
+            }
+        }
+    }, [image]);
+
     return (
         <Link href={href}>
             <div className="w-full h-auto max-h-[300px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
@@ -31,6 +53,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
                     )}>
                         <div className="relative w-full md:w-1/2">
                             <img
+                                ref={imgRef}
                                 src={image}
                                 alt={imageAlt}
                                 className=" h-[300px] object-cover"
@@ -41,7 +64,10 @@ const NewsCard: React.FC<NewsCardProps> = ({
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full max-h-[300px] md:w-1/2 p-6 flex flex-col justify-between">
+                        <div className={cn(
+                            "w-full max-h-[300px] p-6 flex flex-col justify-between",
+                            isVertical ? "md:w-2/3" : "md:w-1/2"
+                        )}>
                             <div>
                                 <h3 className="text-xl font-semibold mb-3">{title}</h3>
                                 <p className="text-gray-300">{description}</p>
