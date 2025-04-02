@@ -1,45 +1,69 @@
-import React from 'react';
+import React from "react";
 import Link from 'next/link';
-import Image from 'next/image';
+import {cn} from "@/lib/utils";
 
-interface EventCardProps {
-  href: string;
-  alt: string;
-  imageUrl: string | null;
-  date: string;
-  description: string;
+export interface NewsCardProps {
+    href: string;
+    title: string;
+    description: string;
+    date: string;
+    image: string;
+    imageAlt?: string;
+    textOnLeft?: boolean;
 }
 
-const NewsCard: React.FC<EventCardProps> = ({ href, alt, imageUrl, date, description }) => {
-  const formattedDate = new Date(date).toLocaleDateString('hu-HU', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-
-  return (
-    <Link href={href}>
-      <div className="bg-[#3E3F46] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-sm cursor-pointer">
-        {imageUrl && (
-          <div className="relative h-48">
-            <Image
-              src={imageUrl}
-              alt={alt}
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-300 hover:scale-105"
-            />
-            <div className="absolute top-0 left-0 bg-gray-900 text-gray-100 px-3 py-1 m-2 rounded">
-              {formattedDate}
+const NewsCard: React.FC<NewsCardProps> = ({
+    href,
+    title,
+    description,
+    date,
+    image,
+    imageAlt = "News image",
+    textOnLeft = false,
+}) => {
+    return (
+        <Link href={href}>
+            <div className="w-full h-auto max-h-[300px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
+                {image ? (
+                    <div className={cn(
+                        "flex flex-col md:flex-row",
+                        textOnLeft && "md:flex-row-reverse"
+                    )}>
+                        <div className="relative w-full md:w-1/2">
+                            <img
+                                src={image}
+                                alt={imageAlt}
+                                className=" h-[300px] object-cover"
+                            />
+                            <div className="absolute top-4 left-4">
+                                <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md">
+                                    {new Date(date).toLocaleDateString('hu-HU', {})}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full max-h-[300px] md:w-1/2 p-6 flex flex-col justify-between">
+                            <div>
+                                <h3 className="text-xl font-semibold mb-3">{title}</h3>
+                                <p className="text-gray-300">{description}</p>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="w-full p-6">
+                        <div className="mb-4">
+                            <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md border border-gray-700">
+                                {new Date(date).toLocaleDateString('hu-HU', {})}
+                            </div>
+                        </div>
+                        <div className="mt-4">
+                            <h3 className="text-xl font-semibold mb-3">{title}</h3>
+                            <p className="text-gray-300">{description}</p>
+                        </div>
+                    </div>
+                )}
             </div>
-          </div>
-        )}
-        <div className="p-6 max-h-64">
-          <p className="text-gray-300 text-sm leading-normal line-clamp-6">{description}</p>
-        </div>
-      </div>
-    </Link>
-  );
+        </Link>
+    );
 };
 
 export default NewsCard;

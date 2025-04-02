@@ -27,11 +27,17 @@ export const News: CollectionConfig = {
                     maxDepth: 1,
                 },
                 {
-                    name: 'description',
+                    name: 'shortDescription',
+                    label: 'Rövid Leírás',
+                    type: 'textarea',
+                    required: true,
+                    maxLength: 420,
+                },
+                {
+                    name: 'Description',
                     label: 'Leírás',
                     type: 'textarea',
                     required: true,
-                    maxLength: 550,
-                },
+                }
             ],
         }

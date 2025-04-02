@@ -162,7 +162,8 @@ export interface News {
   title: string;
   date: string;
   picture?: (number | null) | Media;
-  description: string;
+  shortDescription: string;
+  Description: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -343,7 +344,8 @@ export interface NewsSelect<T extends boolean = true> {
   title?: T;
   date?: T;
   picture?: T;
-  description?: T;
+  shortDescription?: T;
+  Description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
