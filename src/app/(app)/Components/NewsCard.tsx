@@ -51,7 +51,10 @@ const NewsCard: React.FC<NewsCardProps> = ({
                         "flex flex-col md:flex-row",
                         textOnLeft && "md:flex-row-reverse"
                     )}>
-                        <div className="relative w-full md:w-1/2">
+                        <div className={cn(
+                            "relative w-full",
+                            isVertical ? "md:w-1/3" : "md:w-1/2"
+                        )}>
                             <img
                                 ref={imgRef}
                                 src={image}
