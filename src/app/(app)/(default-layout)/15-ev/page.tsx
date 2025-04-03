@@ -19,7 +19,7 @@ export default async function Home() {
 
     return (
         <main className="bg-gray-900 min-h-screen">
-            <Timeline events={events.docs || []} news={false}/>
+            <Timeline events={events.docs || []} newsPage={false}/>
         </main>
     )
 }
