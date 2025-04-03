@@ -45,7 +45,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
 
     return (
         <Link href={href}>
-            <div className="w-full h-auto max-h-[300px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
+            <div className="w-full h-auto max-h-[310px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
                 {image ? (
                     <div className={cn(
                         "flex flex-col md:flex-row",
@@ -59,7 +59,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
                                 ref={imgRef}
                                 src={image}
                                 alt={imageAlt}
-                                className=" h-[300px] object-cover"
+                                className=" h-[310px] object-cover"
                             />
                             <div className="absolute top-4 left-4">
                                 <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md">
@@ -68,12 +68,12 @@ const NewsCard: React.FC<NewsCardProps> = ({
                             </div>
                         </div>
                         <div className={cn(
-                            "w-full max-h-[300px] p-6 flex flex-col justify-between",
+                            "w-full max-h-[310px] p-6 flex flex-col justify-between",
                             isVertical ? "md:w-2/3" : "md:w-1/2"
                         )}>
                             <div>
                                 <h3 className="text-xl font-semibold mb-3">{title}</h3>
-                                <p className="text-gray-300">{description}</p>
+                                <p className="text-gray-300 line-clamp-[9]">{description}</p>
                             </div>
                         </div>
                     </div>
