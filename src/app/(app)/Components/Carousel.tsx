@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {BiSolidLeftArrow, BiSolidRightArrow} from "react-icons/bi";
 
-const Slider = dynamic(() => import("react-slick"), {ssr: false});
 
 const NextArrow = (props: { onClick?: () => void }) => {
     const {onClick} = props;
@@ -41,6 +40,7 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
         centerMode: true,
         infinite: true,
         slidesToShow: 1,
+        slidesToScroll: 1,
         speed: 500,
         autoplay: true,
         autoplaySpeed: 5000,
@@ -48,15 +48,18 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
         prevArrow: <PrevArrow/>,
     };
 
+    // Workaround for JSX typing issue
+    const TypedSlider = Slider as unknown as React.ComponentType<any>; //eslint-disable-line
+
     return (
-        <div className="slider-container">
-            <Slider {...settings}>
+        <div className="slider-container" id="carousel">
+            <TypedSlider {...settings}>
                 {data.docs.map((doc, index) => (
-                    <div key={index} className="p-2 flex h-48 sm:h-64 md:h-96 w-auto outline-none">
+                    <div key={index} className="p-2 flex h-screen w-auto outline-none">
                         <img src={doc.url} alt={doc.alt} className="object-cover h-full w-auto"/>
                     </div>
                 ))}
-            </Slider>
+            </TypedSlider>
         </div>
     );
 }

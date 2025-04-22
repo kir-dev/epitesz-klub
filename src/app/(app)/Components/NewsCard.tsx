@@ -1,40 +1,97 @@
-import React from 'react';
-import Image from 'next/image';
+import React, {useEffect, useRef, useState} from "react";
+import Link from 'next/link';
+import {cn} from "@/lib/utils";
 
-interface EventCardProps {
-    alt: string;
-    imageUrl: string | null;
-    date: string;
+export interface NewsCardProps {
+    href: string;
+    title: string;
     description: string;
+    date: string;
+    image: string;
+    imageAlt?: string;
+    textOnLeft?: boolean;
 }
 
-const NewsCard: React.FC<EventCardProps> = ({ alt, imageUrl, date, description }) => {
-    const formattedDate = new Date(date).toLocaleDateString('hu-HU', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
+const NewsCard: React.FC<NewsCardProps> = ({
+    href,
+    title,
+    description,
+    date,
+    image,
+    imageAlt = "News image",
+    textOnLeft = false,
+}) => {
+    const [isVertical, setIsVertical] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (image && imgRef.current) {
+            const checkImageOrientation = () => {
+                const img = imgRef.current;
+                if (img && img.complete) {
+                    setIsVertical(img.naturalHeight > img.naturalWidth);
+                }
+            };
+
+            // Check when the image loads
+            imgRef.current.onload = checkImageOrientation;
+
+            // Also check immediately if the image is already cached
+            if (imgRef.current.complete) {
+                checkImageOrientation();
+            }
+        }
+    }, [image]);
 
     return (
-        <div className="bg-[#3E3F46] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-sm">
-            {imageUrl && (
-                <div className="relative h-48">
-                    <Image
-                        src={imageUrl}
-                        alt={alt}
-                        layout={"fill"}
-                        objectFit="cover"
-                        className="transition-transform duration-300 hover:scale-105"
-                    />
-                    <div className="absolute top-0 left-0 bg-gray-900 text-gray-100 px-3 py-1 m-2 rounded">
-                        {formattedDate}
+        <Link href={href}>
+            <div className="w-full h-auto max-h-[310px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
+                {image ? (
+                    <div className={cn(
+                        "flex flex-col md:flex-row",
+                        textOnLeft && "md:flex-row-reverse"
+                    )}>
+                        <div className={cn(
+                            "relative w-full",
+                            isVertical ? "md:w-1/3" : "md:w-1/2"
+                        )}>
+                            <img
+                                ref={imgRef}
+                                src={image}
+                                alt={imageAlt}
+                                className=" h-[310px] object-cover"
+                            />
+                            <div className="absolute top-4 left-4">
+                                <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md">
+                                    {new Date(date).toLocaleDateString('hu-HU', {})}
+                                </div>
+                            </div>
+                        </div>
+                        <div className={cn(
+                            "w-full max-h-[310px] p-6 flex flex-col justify-between",
+                            isVertical ? "md:w-2/3" : "md:w-1/2"
+                        )}>
+                            <div>
+                                <h3 className="text-xl font-semibold mb-3">{title}</h3>
+                                <p className="text-gray-300 line-clamp-[9]">{description}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            )}
-            <div className="p-6 max-h-64">
-                <p className="text-gray-300 text-sm leading-normal line-clamp-6">{description}</p>
+                ) : (
+                    <div className="w-full p-6">
+                        <div className="mb-4">
+                            <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md border border-gray-700">
+                                {new Date(date).toLocaleDateString('hu-HU', {})}
+                            </div>
+                        </div>
+                        <div className="mt-4">
+                            <h3 className="text-xl font-semibold mb-3">{title}</h3>
+                            <p className="text-gray-300">{description}</p>
+                        </div>
+                    </div>
+                )}
             </div>
-        </div>
+        </Link>
     );
 };
 

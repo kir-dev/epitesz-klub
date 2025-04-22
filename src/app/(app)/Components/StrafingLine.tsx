@@ -25,7 +25,6 @@ export default function StrafingLine(props: lineProps) {
 
     return (
         <div className="min-h-screen p-8 w-full relative" style={{ height: `${totalHeight}px` }}>
-            {/* Timeline path */}
             <div className="absolute left-0 top-0 w-full">
                 <svg
                     className="w-full stroke-white stroke-[4px]" style={{ height: `${totalHeight}px` }}
@@ -45,22 +44,23 @@ export default function StrafingLine(props: lineProps) {
                     }).join(' ') : ''} />
                 </svg>
             </div>
-
-            {/* Event boxes */}
             <div className="relative">
                 {Array.isArray(props.news) && props.news.map((post, index) => {
                     const isLeft = index % 2 === 0;
                     return (
                         <div
                             key={post.id}
-                            className={`absolute ${isLeft ? 'left-10' : 'right-0'} w-1/3`}
+                            className={`absolute ${isLeft ? 'left-10' : 'right-0'} w-1/2 h-1/2`}
                             style={{ top: `${index * 350}px` }}
                         >
                             <NewsCard
-                                alt={isMedia(post.picture) ? post.picture.alt ?? '' : ''}
-                                imageUrl={isMedia(post.picture) ? post.picture.url ?? '' : ''}
+                                href={`/recent#news-${post.id}`}
+                                image={isMedia(post.picture) ? post.picture.url ?? '' : ''}
+                                imageAlt={isMedia(post.picture) ? post.picture.alt ?? '' : ''}
                                 date={post.date}
-                                description={post.description}
+                                description={post.shortDescription}
+                                title={post.title}
+                                textOnLeft={!isLeft}
                             />
                         </div>
                     );

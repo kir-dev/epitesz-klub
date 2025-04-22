@@ -8,6 +8,12 @@ export const News: CollectionConfig = {
             },
             fields: [
                 {
+                    name: "title",
+                    label: "Cím",
+                    type: "text",
+                    required: true,
+                },
+                {
                     name: 'date',
                     label: 'Dátum',
                     type: 'date',
@@ -21,11 +27,17 @@ export const News: CollectionConfig = {
                     maxDepth: 1,
                 },
                 {
+                    name: 'shortDescription',
+                    label: 'Rövid Leírás',
+                    type: 'textarea',
+                    required: true,
+                    maxLength: 420,
+                },
+                {
                     name: 'description',
                     label: 'Leírás',
                     type: 'textarea',
                     required: true,
-                    maxLength: 550,
-                },
+                }
             ],
         }
