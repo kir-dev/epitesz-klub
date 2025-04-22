@@ -73,6 +73,7 @@ export interface Config {
     events: Event;
     categories: Category;
     news: News;
+    carousel: Carousel;
     publications: Publication;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    carousel: CarouselSelect<false> | CarouselSelect<true>;
     publications: PublicationsSelect<false> | PublicationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -194,7 +196,7 @@ export interface User {
  */
 export interface Event {
   id: number;
-  type: number | Category;
+  type?: (number | null) | Category;
   title: string;
   date: string;
   picture: number | Media;
@@ -232,6 +234,39 @@ export interface News {
   description: string;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: number;
+  title: string;
+  date: string;
+  picture?: (number | null) | Media;
+  shortDescription: string;
+  Description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel".
+ */
+export interface Carousel {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -283,6 +318,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: number | News;
+      } | null)
+    | ({
+        relationTo: 'carousel';
+        value: number | Carousel;
       } | null)
     | ({
         relationTo: 'publications';
@@ -408,11 +447,31 @@ export interface CategoriesSelect<T extends boolean = true> {
  * via the `definition` "news_select".
  */
 export interface NewsSelect<T extends boolean = true> {
+  title?: T;
   date?: T;
   picture?: T;
-  description?: T;
+  shortDescription?: T;
+  Description?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel_select".
+ */
+export interface CarouselSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
