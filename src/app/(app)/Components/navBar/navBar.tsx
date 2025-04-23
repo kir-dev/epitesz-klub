@@ -4,7 +4,6 @@ import * as React from "react"
 import {useEffect, useState} from "react"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
-import Image from "next/image";
 
 export interface NavItem {
     title: string
@@ -12,8 +11,12 @@ export interface NavItem {
     children?: NavItem[]
     dropdownColor?: string
 }
-
-const navItems: NavItem[] = [
+const currentYear = new Date().getFullYear()
+export const navItems: NavItem[] = [
+    {
+        title: "aktuális",
+        href: "/recent",
+    },
     {
         title: "rólunk",
         href: "/about-us",
@@ -31,7 +34,7 @@ const navItems: NavItem[] = [
         dropdownColor: "#F1CA47",
     },
     {
-        title: "15 év",
+        title: `${currentYear - 2008} év`,
         href: "/15-ev",
         dropdownColor: "#E8804C",
     },
@@ -43,6 +46,7 @@ const navItems: NavItem[] = [
 
 interface NavBarProps {
     categories: NavItem[]
+    homePage: boolean
 }
 
 export default function NavBar(props: NavBarProps) {
@@ -50,32 +54,48 @@ export default function NavBar(props: NavBarProps) {
     const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
     const pathname = usePathname();
 
-    navItems[1].children = props.categories;
+    navItems[2].children = props.categories;
 
+    const [navbarBg, setNavbarBg] = useState("bg-transparent");
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
+
     useEffect(() => {
+        const handleScroll = () => {
+            const carousel = document.getElementById("carousel");
+            if (carousel) {
+                const carouselBottom = carousel.getBoundingClientRect().bottom;
+                if (carouselBottom <= 0) {
+                    setNavbarBg("bg-black");
+                } else {
+                    setNavbarBg("bg-transparent");
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
         setIsOpen(false);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [pathname]);
 
     return (
-        <header className="relative w-full z-[1000]">
+        <header className={`${props.homePage ? 'fixed top-0 left-0' : 'relative'} w-full z-10`}>
             <div
-                className="absolute inset-0 bg-black lg:bg-contain bg-cover h-19"
+                className={`${props.homePage ? "block" : "block"} absolute inset-0 lg:bg-contain bg-cover h-19 ${navbarBg}`}
                 style={{
-                    backgroundImage: 'url(/NavBarBg.png)',
+                    backgroundImage: `url(${props.homePage ? undefined : '/NavBarBg.png'})`,
                 }}
             />
 
             <div className="relative mx-auto max-w-7xl px-6 py-6">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                        <Image src="/logo.png" alt="Építész Klub Szakkollégium" width={50} height={50} />
+                    <div className="flex items-center space-x-4 z-30">
+                        <img src="/logo.png" alt="Építész Klub Szakkollégium" width={50}/>
                     <Link
                         href="/"
-                        className="px-6 py-2 text-2xl font-bold text-white"
+                        className="px-6 py-2 text-4xl font-bold text-white"
                     >
                         Építész Klub Szakkollégium
                     </Link>
@@ -158,6 +178,7 @@ export default function NavBar(props: NavBarProps) {
                     </div>
                 )}
             </div>
+            <hr className="border-2 border-white" />
         </header>
     )
 }
