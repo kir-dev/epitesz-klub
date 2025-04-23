@@ -46,9 +46,9 @@ export default function Timeline({ items = [], newsPage }: TimelineProps) {
     return (
         <div className="bg-black min-h-screen py-8">
             <PageTitle title={newsPage ? "Aktuális" : `${currentYear - 2008} év`} />
-            <div className="max-w-4xl mx-auto" ref={timelineRef}>
+            <div className="mx-auto" ref={timelineRef}>
                 <div className="relative">
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#3E3F46]" />
+                    <div className="absolute left-2 top-0 bottom-0 w-1 bg-[#3E3F46]" />
                     {items.map((item, index) => (
                         <div
                             id={`news-${"id" in item ? item.id : ""}`}
@@ -58,12 +58,12 @@ export default function Timeline({ items = [], newsPage }: TimelineProps) {
                             }`}
                             data-index={index}
                         >
-                            <div className="absolute left-0 top-0 w-8 h-8 -ml-3.5 bg-black border-2 border-[#3E3F46] flex items-center justify-center transform transition-transform duration-300">
+                            <div className="absolute left-2 top-0 w-8 h-8 -ml-3.5 bg-black border-2 border-[#3E3F46] flex items-center justify-center transform transition-transform duration-300">
                                 <span className="text-gray-400 text-sm font-bold">
                                     {"date" in item ? new Date(item.date).getFullYear().toString().slice(-2) : ""}
                                 </span>
                             </div>
-                            <div className="ml-12 bg-[#27272A] p-6 shadow-lg border-l-4 border-[#3E3F46] transition-all duration-300 hover:border-gray-400">
+                            <div className="ml-14 bg-[#27272A] p-6 shadow-lg border-l-4 border-[#3E3F46] transition-all duration-300 hover:border-gray-400">
                                 <h2 className="text-3xl font-bold mb-4 text-gray-200">
                                     {"title" in item ? item.title : ""}
                                 </h2>
