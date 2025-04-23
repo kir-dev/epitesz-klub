@@ -36,7 +36,6 @@ const PrevArrow = (props: { onClick?: () => void }) => {
 export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[] } }) {
     const settings = {
         className: "overflow-hidden",
-        variableWidth: true,
         centerMode: true,
         infinite: true,
         slidesToShow: 1,
@@ -52,11 +51,11 @@ export function MyCarousel({data}: { data: { docs: { url: string; alt: string }[
     const TypedSlider = Slider as unknown as React.ComponentType<any>; //eslint-disable-line
 
     return (
-        <div className="slider-container" id="carousel">
+        <div className="slider-container overflow-hidden" id="carousel">
             <TypedSlider {...settings}>
                 {data.docs.map((doc, index) => (
-                    <div key={index} className="p-2 flex h-screen w-auto outline-none">
-                        <img src={doc.url} alt={doc.alt} className="object-cover h-full w-auto"/>
+                    <div key={index} className="p-2 h-screen w-auto outline-none">
+                        <img src={doc.url} alt={doc.alt} className="object-cover mx-auto h-full w-auto"/>
                     </div>
                 ))}
             </TypedSlider>

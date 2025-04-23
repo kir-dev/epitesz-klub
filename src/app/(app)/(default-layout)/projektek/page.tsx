@@ -13,7 +13,7 @@ export default async function ProjectsPage() {
     categories.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
     return (
-        <div className="mt-12">
+        <div className="py-8">
             <PageTitle title={"Projektek"} />
             <ProjectGroups categories={categories} /> 
         </div>

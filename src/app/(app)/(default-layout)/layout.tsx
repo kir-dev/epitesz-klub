@@ -35,9 +35,9 @@ export default function RootLayout({
         <div>
           {fetchNavItems(false)}
         </div>
-          <div className='space-y-4 py-8 mx-4 min-h-screen'>
-                  {children}
-          </div>
+        <div className='space-y-4 py-8 mx-auto max-w-7xl px-6 min-h-screen'>
+            {children}
+        </div>
         <Footer />
       </body>
     </html>
