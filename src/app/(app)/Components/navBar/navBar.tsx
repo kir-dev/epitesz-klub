@@ -89,7 +89,7 @@ export default function NavBar(props: NavBarProps) {
                 }}
             />
 
-            <div className="relative mx-auto max-w-7xl px-6 py-6">
+            <div className="relative mx-auto max-w-7xl px-6 py-6 text-2xl">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4 z-30">
                         <img src="/logo.png" alt="Építész Klub Szakkollégium" width={50}/>

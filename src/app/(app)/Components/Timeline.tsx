@@ -45,7 +45,7 @@ export default function Timeline({ items = [], newsPage }: TimelineProps) {
 
     return (
         <div className="bg-black min-h-screen py-8">
-            <PageTitle title={`${currentYear - 2008} év`} />
+            <PageTitle title={newsPage ? "Aktuális" : `${currentYear - 2008} év`} />
             <div className="max-w-4xl mx-auto" ref={timelineRef}>
                 <div className="relative">
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#3E3F46]" />
