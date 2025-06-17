@@ -14,6 +14,7 @@ import {Events} from './collections/Events'
 import {Categories} from './collections/Categories'
 import {vercelBlobStorage} from "@payloadcms/storage-vercel-blob";
 import {News} from "@/collections/News";
+import {Carousel} from "@/collections/Carousel";
 import {Publications} from "@/collections/Publications";
 
 
@@ -27,7 +28,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [ Media, Members, Users, Events, Categories, News, Publications ],
+    collections: [ Media, Members, Users, Events, Categories, News, Carousel, Publications],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {

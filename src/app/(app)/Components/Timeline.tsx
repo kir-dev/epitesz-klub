@@ -18,27 +18,24 @@ export default function Timeline({ events }: TimelineProps) {
   const timelineRef = useRef<HTMLDivElement>(null);
   const currentYear = new Date().getFullYear();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(
-              entry.target.getAttribute("data-index") || "-1",
-            );
-            setActiveIndex(index);
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = Number(entry.target.getAttribute("data-index") || "-1")
+                        setActiveIndex(index)
+                    }
+                })
+            },
+            { threshold: 0.5 }
+        )
 
-    const timelineItems =
-      timelineRef.current?.querySelectorAll(".timeline-item");
-    timelineItems?.forEach((item) => observer.observe(item));
+        const timelineItems = timelineRef.current?.querySelectorAll(".timeline-item")
+        timelineItems?.forEach((item) => observer.observe(item))
 
-    return () => observer.disconnect();
-  }, []);
+        return () => observer.disconnect()
+    }, [])
 
   return (
     <div className="bg-black min-h-screen">

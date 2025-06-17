@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Category, Media } from "@/payload-types";
 import Image from "next/image";

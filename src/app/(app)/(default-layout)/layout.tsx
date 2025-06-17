@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Építész Klub",
-  description: "Építész Klub",
+    title: "Építész Klub",
+    description: "Építész Klub Szakkollégium hivatalos honlapja",
 };
 
 export const revalidate = 60;
@@ -28,7 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>Építész Klub</title>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

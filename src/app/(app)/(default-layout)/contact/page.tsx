@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import React from "react";
-import ContactInfo from "@/app/(app)/Components/ContactInfo";
+import React from "react"
+import ContactInfo from "@/app/(app)/Components/ContactInfo"
 import Link from "next/link";
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 import Form from "@/app/(app)/Components/Form";
 import PageTitle from "@/app/(app)/Components/PageTitle";
 
 // Dinamikus importálás: térkép csak a böngészőben jelenik meg
-const Map = dynamic(() => import("@/app/(app)/Components/Map"), { ssr: false });
+const Map = dynamic(() => import('@/app/(app)/Components/Map'), { ssr: false });
 
 export default function Page() {
   return (
