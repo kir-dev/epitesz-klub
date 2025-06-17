@@ -1,98 +1,73 @@
-import React, {useEffect, useRef, useState} from "react";
-import Link from 'next/link';
-import {cn} from "@/lib/utils";
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export interface NewsCardProps {
-    href: string;
-    title: string;
-    description: string;
-    date: string;
-    image: string;
-    imageAlt?: string;
-    textOnLeft?: boolean;
+  href: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  imageAlt?: string;
+  textOnLeft?: boolean;
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({
-    href,
-    title,
-    description,
-    date,
-    image,
-    imageAlt = "News image",
-    textOnLeft = false,
+  href,
+  title,
+  description,
+  date,
+  image,
+  imageAlt = "News image",
+  textOnLeft = false,
 }) => {
-    const [isVertical, setIsVertical] = useState(false);
-    const imgRef = useRef<HTMLImageElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
-    useEffect(() => {
-        if (image && imgRef.current) {
-            const checkImageOrientation = () => {
-                const img = imgRef.current;
-                if (img && img.complete) {
-                    setIsVertical(img.naturalHeight > img.naturalWidth);
-                }
-            };
+  return (
+    <Link href={href}>
+      <div className="rounded-lg shadow-md md:bg-gray-900 text-white">
+        <div
+          className={cn(
+            "flex flex-col md:flex-row overflow-hidden",
+            textOnLeft && "md:flex-row-reverse",
+          )}
+        >
+          <div
+            className="md:hidden absolute inset-0 bg-cover bg-center -z-20 rounded-lg"
+            style={{ backgroundImage: `url(${image})` }}
+          />
+          <div className="md:hidden absolute inset-0 bg-black bg-opacity-40 -z-20" />
 
-            // Check when the image loads
-            imgRef.current.onload = checkImageOrientation;
+          <div className={cn("hidden md:block inset-0 md:relative w-full")}>
+            <img
+              ref={imgRef}
+              src={image}
+              alt={imageAlt}
+              className="h-[260px] md:h-[310px] object-cover"
+            />
+          </div>
+          <div
+            className={cn(
+              "w-full h-[200px] sm:h-[260px] md:h-[310px] p-4 md:p-6 flex flex-col justify-start",
+            )}
+          >
+            <h3 className="text-xl font-semibold mb-3">{title}</h3>
 
-            // Also check immediately if the image is already cached
-            if (imgRef.current.complete) {
-                checkImageOrientation();
-            }
-        }
-    }, [image]);
-
-    return (
-        <Link href={href}>
-            <div className="w-full h-auto max-h-[310px] overflow-hidden rounded-lg shadow-md bg-gray-900 text-white">
-                {image ? (
-                    <div className={cn(
-                        "flex flex-col md:flex-row",
-                        textOnLeft && "md:flex-row-reverse"
-                    )}>
-                        <div className={cn(
-                            "relative w-full",
-                            isVertical ? "md:w-1/3" : "md:w-1/2"
-                        )}>
-                            <img
-                                ref={imgRef}
-                                src={image}
-                                alt={imageAlt}
-                                className=" h-[310px] object-cover"
-                            />
-                            <div className="absolute top-4 left-4">
-                                <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md">
-                                    {new Date(date).toLocaleDateString('hu-HU', {})}
-                                </div>
-                            </div>
-                        </div>
-                        <div className={cn(
-                            "w-full max-h-[310px] p-6 flex flex-col justify-between",
-                            isVertical ? "md:w-2/3" : "md:w-1/2"
-                        )}>
-                            <div>
-                                <h3 className="text-xl font-semibold mb-3">{title}</h3>
-                                <p className="text-gray-300 line-clamp-[9]">{description}</p>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="w-full p-6">
-                        <div className="mb-4">
-                            <div className="inline-block bg-gray-900 text-white py-2 px-4 rounded-md border border-gray-700">
-                                {new Date(date).toLocaleDateString('hu-HU', {})}
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <h3 className="text-xl font-semibold mb-3">{title}</h3>
-                            <p className="text-gray-300">{description}</p>
-                        </div>
-                    </div>
-                )}
+            <div
+              className={`md:absolute top-4 ${textOnLeft ? "right-4" : "left-4"}`}
+            >
+              <div className="inline-block md:bg-gray-900 text-white text-sm sm:text-base md:py-2 md:px-4 rounded-md">
+                {new Date(date).toLocaleDateString("hu-HU", {})}
+              </div>
             </div>
-        </Link>
-    );
+            <p className="text-gray-300 text-wrap text-sm sm:text-base truncate">
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
 };
 
 export default NewsCard;
