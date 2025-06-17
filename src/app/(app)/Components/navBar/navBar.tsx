@@ -61,6 +61,14 @@ export default function NavBar(props: NavBarProps) {
     setIsOpen(!isOpen);
   };
 
+  const openDropdownArrow = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    title: string,
+  ) => {
+    e.preventDefault();
+    setOpenSubmenu(openSubmenu === title ? null : title);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const carousel = document.getElementById("carousel");
@@ -171,32 +179,27 @@ export default function NavBar(props: NavBarProps) {
             {navItems.map((item) => (
               <div key={item.title} className="border-b border-gray-700">
                 <Link href={item.href}>
-                  <button
-                    onClick={() =>
-                      setOpenSubmenu(
-                        openSubmenu === item.title ? null : item.title,
-                      )
-                    }
-                    className="flex justify-between items-center w-full px-4 py-2 transition-colors"
-                  >
-                    {item.title}
+                  <div className="flex justify-between items-center w-full transition-colors">
+                    <div className="px-4 py-2">{item.title}</div>
                     {item.children && (
-                      <svg
-                        className={`w-4 h-4 transition-transform ${openSubmenu === item.title ? "rotate-180" : ""}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
+                      <button onClick={(e) => openDropdownArrow(e, item.title)}>
+                        <svg
+                          className={`w-8 transition-transform ${openSubmenu === item.title ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
                     )}
-                  </button>
+                  </div>
                 </Link>
                 {item.children && openSubmenu === item.title && (
                   <div style={{ backgroundColor: item.dropdownColor }}>
