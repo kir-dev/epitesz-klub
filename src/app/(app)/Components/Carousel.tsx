@@ -52,6 +52,9 @@ export function MyCarousel({
     speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
+    draggable: false,
+    centerPadding: "0px",
+    swipe: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
@@ -67,7 +70,7 @@ export function MyCarousel({
             <img
               src={doc.url}
               alt={doc.alt}
-              className="object-cover h-full w-auto"
+              className="object-cover h-full w-full"
             />
           </div>
         ))}
