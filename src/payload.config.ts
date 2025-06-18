@@ -1,56 +1,65 @@
 // storage-adapter-import-placeholder
-import {postgresAdapter} from '@payloadcms/db-postgres'
-import {payloadCloudPlugin} from '@payloadcms/payload-cloud'
-import {lexicalEditor} from '@payloadcms/richtext-lexical'
-import path from 'path'
-import {buildConfig} from 'payload'
-import sharp from 'sharp'
-import {fileURLToPath} from 'url'
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import path from "path";
+import { buildConfig } from "payload";
+import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-import {Media} from './collections/Media'
-import {Members} from './collections/Members'
-import {Users} from './collections/Users'
-import {Events} from './collections/Events'
-import {Categories} from './collections/Categories'
-import {vercelBlobStorage} from "@payloadcms/storage-vercel-blob";
-import {News} from "@/collections/News";
-import {Carousel} from "@/collections/Carousel";
-import {Publications} from "@/collections/Publications";
+import { Media } from "./collections/Media";
+import { Members } from "./collections/Members";
+import { Users } from "./collections/Users";
+import { Events } from "./collections/Events";
+import { Categories } from "./collections/Categories";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { News } from "@/collections/News";
+import { Carousel } from "@/collections/Carousel";
+import { Publications } from "@/collections/Publications";
 
-
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
-    admin: {
-        user: Users.slug,
-        importMap: {
-            baseDir: path.resolve(dirname),
-        },
+  admin: {
+    user: Users.slug,
+    importMap: {
+      baseDir: path.resolve(dirname),
     },
-    collections: [ Media, Members, Users, Events, Categories, News, Carousel, Publications],
-    editor: lexicalEditor(),
-    secret: process.env.PAYLOAD_SECRET || '',
-    typescript: {
-        outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  collections: [
+    Media,
+    Members,
+    Users,
+    Events,
+    Categories,
+    News,
+    Carousel,
+    Publications,
+  ],
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET || "",
+  typescript: {
+    outputFile: path.resolve(dirname, "payload-types.ts"),
+  },
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI || "",
     },
-    db: postgresAdapter({
-        pool: {
-            connectionString: process.env.DATABASE_URI || '',
-        },
+  }),
+  sharp,
+  plugins: [
+    payloadCloudPlugin(),
+    vercelBlobStorage({
+      enabled: true, // Optional, defaults to true
+      collections: {
+        media: true,
+      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.BLOB_READ_WRITE_TOKEN
+        ? process.env.BLOB_READ_WRITE_TOKEN
+        : "",
     }),
-    sharp,
-    plugins: [
-        payloadCloudPlugin(),
-        vercelBlobStorage({
-            enabled: true, // Optional, defaults to true
-            collections: {
-                media: true
-            },
-            // Token provided by Vercel once Blob storage is added to your Vercel project
-            token: process.env.BLOB_READ_WRITE_TOKEN ? process.env.BLOB_READ_WRITE_TOKEN : "",
-        }),
-        // storage-adapter-placeholder
-    ],
-
-})
+    // storage-adapter-placeholder
+  ],
+});

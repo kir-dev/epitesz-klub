@@ -1,19 +1,17 @@
-import {getPayload} from "payload";
+import { getPayload } from "payload";
 import config from "@payload-config";
-import NavBar, {NavItem} from "./navBar";
+import NavBar, { NavItem } from "./navBar";
 
-export default async function fetchNavItems(homePage: boolean) {
-    const payload = await getPayload({ config })
-    const categories = await payload.find({
-        collection: "categories",
-    })
+export default async function fetchNavItems(homePage: boolean = false) {
+  const payload = await getPayload({ config });
+  const categories = await payload.find({
+    collection: "categories",
+  });
 
-    const categoryItems: NavItem[] = categories.docs.map((category) => ({
-        title: category.name,
-        href: `/projektek/${category.id}`,
-    }))
+  const categoryItems: NavItem[] = categories.docs.map((category) => ({
+    title: category.name,
+    href: `/projektek/${category.id}`,
+  }));
 
-    return (
-        <NavBar categories={categoryItems} homePage={homePage} />
-    )
+  return <NavBar categories={categoryItems} homePage={homePage} />;
 }
