@@ -17,7 +17,7 @@ export default function CategoryEvents(props: CategoryEventProps) {
       {props.events.map((event, index) => (
         <div key={index} className="max-w-4xl mb-14">
           <div className="space-y-2">
-            <div className="text-3xl font-bold">
+            <div id={event.id.toString()} className="text-3xl font-bold">
               {event.title}
               <span className="text-muted-foreground ml-2">
                 /{" "}
