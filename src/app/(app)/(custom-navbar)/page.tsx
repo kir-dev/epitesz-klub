@@ -25,8 +25,7 @@ export default async function Home() {
       alt: doc.alt ?? "",
     })),
   };
-  console.log("Media Data:", mediaData);
-  console.log("News:", news.docs);
+
   return (
     <>
       <div id="carousel" className="relative w-full h-screen z-40">
