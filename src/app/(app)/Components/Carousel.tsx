@@ -41,7 +41,7 @@ const PrevArrow = (props: { onClick?: () => void }) => {
 export function MyCarousel({
   data,
 }: {
-  data: { docs: { url: string; alt: string }[] };
+  data: { docs: { url: string; alt: string; redirect: string }[] };
 }) {
   const settings = {
     className: "overflow-hidden",
@@ -67,11 +67,13 @@ export function MyCarousel({
       <TypedSlider {...settings}>
         {data.docs.map((doc, index) => (
           <div key={index} className="px-2 h-screen w-auto outline-none">
-            <img
-              src={doc.url}
-              alt={doc.alt}
-              className="object-cover h-full w-full"
-            />
+            <a href={doc.redirect}>
+              <img
+                src={doc.url}
+                alt={doc.alt}
+                className="object-cover h-full w-full"
+              />
+            </a>
           </div>
         ))}
       </TypedSlider>
