@@ -1,7 +1,7 @@
 import config from "@payload-config";
 import { BasePayload, getPayload } from "payload";
 import { MyCarousel } from "../Components/Carousel";
-import { Carousel } from "@/payload-types";
+import { Carousel, Media } from "@/payload-types";
 import StrafingLine from "@/app/(app)/Components/StrafingLine";
 import type { Event } from "@/payload-types";
 
@@ -21,7 +21,7 @@ export default async function Home() {
 
   const media = await payload.find({
     collection: "carousel",
-    depth: 2,
+    depth: 3,
   });
 
   const news = await payload.find({
@@ -32,8 +32,8 @@ export default async function Home() {
 
   const mediaData = {
     docs: media.docs.map((doc: Carousel) => ({
-      url: doc.url ?? "",
-      alt: doc.alt ?? "",
+      url: (doc.picture as Media)?.url ?? "",
+      alt: (doc.picture as Media)?.alt ?? "",
       redirect: getRedirectTag(doc.event),
     })),
   };

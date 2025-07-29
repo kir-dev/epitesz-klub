@@ -245,19 +245,10 @@ export interface News {
  */
 export interface Carousel {
   id: number;
-  alt: string;
+  picture: number | Media;
   event?: (number | null) | Event;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -451,19 +442,10 @@ export interface NewsSelect<T extends boolean = true> {
  * via the `definition` "carousel_select".
  */
 export interface CarouselSelect<T extends boolean = true> {
-  alt?: T;
+  picture?: T;
   event?: T;
   updatedAt?: T;
   createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

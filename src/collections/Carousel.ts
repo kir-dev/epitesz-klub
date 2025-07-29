@@ -10,9 +10,11 @@ export const Carousel: CollectionConfig = {
   },
   fields: [
     {
-      name: "alt",
-      label: "Kép alternatív szövege",
-      type: "text",
+      name: "picture",
+      label: "Kép",
+      type: "upload",
+      relationTo: "media",
+      maxDepth: 1,
       required: true,
     },
     {
@@ -22,5 +24,4 @@ export const Carousel: CollectionConfig = {
       relationTo: "events",
     },
   ],
-  upload: true,
 };
