@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .dash-list {
+        @apply list-none pl-4;
+    }
+
+    .dash-list > li {
+        @apply relative before:absolute before:-left-4 before:content-['-'];
+    }
+}
+
 :root {
     --background: #ffffff;
     --foreground: #171717;
